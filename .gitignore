@@ -1,9 +1,7 @@
 # Ignore Godot binary files
-*.import
 *.tscn.export
 *.scn.export
 *.json.export
-*.mimport
 *.import.resources
 *.import.resources.*
 
@@ -21,3 +19,4 @@ __pycache__/
 # Ignore system-specific files
 .DS_Store
 Thumbs.db
+/.import
