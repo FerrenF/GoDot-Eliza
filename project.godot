@@ -1,0 +1,48 @@
+; Engine configuration file.
+; It's best edited using the editor UI and not directly,
+; since the parameters that go here are not all obvious.
+;
+; Format:
+;   [section] ; section goes between []
+;   param=value ; assign values to parameters
+
+config_version=4
+
+_global_script_classes=[ {
+"base": "Node",
+"class": "ElizaWrapper",
+"language": "GDScript",
+"path": "res://Scripts/eliza_wrapper.gd"
+} ]
+_global_script_class_icons={
+"ElizaWrapper": ""
+}
+
+[application]
+
+config/name="Go Dot- Eliza"
+run/main_scene="res://DialogPlayer.tscn"
+config/icon="res://icon.png"
+
+[display]
+
+window/size/width=1192
+window/size/height=800
+
+[gdnative]
+
+singletons=[ "res://pythonscript.gdnlib" ]
+
+[gui]
+
+common/drop_mouse_on_gui_input_disabled=true
+
+[physics]
+
+common/enable_pause_aware_picking=true
+
+[rendering]
+
+quality/intended_usage/framebuffer_allocation=0
+quality/intended_usage/framebuffer_allocation.mobile=0
+environment/default_environment="res://default_env.tres"
