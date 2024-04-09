@@ -1,3 +1,4 @@
 [submodule "Scripts/eliza-python-translation"]
     path = Scripts/eliza-python-translation
     url = https://github.com/FerrenF/eliza-python-translation.git
+    ignore = dirty
