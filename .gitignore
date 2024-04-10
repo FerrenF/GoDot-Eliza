@@ -20,3 +20,4 @@ __pycache__/
 .DS_Store
 Thumbs.db
 /.import
+/addons/pythonscript/windows-64/lib/site-packages/eliza_python_translation
