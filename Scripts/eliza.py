@@ -1,7 +1,7 @@
 # eliza_wrapper.gd
 
 from godot import exposed, Node
-from eliza-python-translation.eliza import Eliza 
+from eliza_python_translation.eliza import Eliza
 
 @exposed
 class Eliza(Node):
