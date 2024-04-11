@@ -15,12 +15,13 @@ class ElizaDialogScene(CanvasLayer):
 	DEBUG = True
 	script_name = "doctor.txt"
 	script_obj = elizascript.Script()
+	load_status = False
 	def _ready(self):
 		"""
 		Called every time the node is added to the scene.
 		Initialization here.
-		"""	
-			
+		"""
+		
 	def init_eliza(self):
 		try:
 			script_str: StringIO = self._load_script(ElizaDialogScene.script_name)
@@ -44,6 +45,12 @@ class ElizaDialogScene(CanvasLayer):
 			print("Failed to load script.")		
 			exit(2)
 			
+		ElizaDialogScene.load_status = status
+		ElizaDialogScene.script_obj = script
+		
+		if ElizaDialogScene.DEBUG:
+			print(f'Eliza initialized.')
+			
 	def _load_script(self, name):
 		cd = os.getcwd()
 		scr_path = cd + "\\Data\\"+name
@@ -60,4 +67,7 @@ class ElizaDialogScene(CanvasLayer):
 		
 		if 'InputEventMouseButton' in str(event.__class__) :
 			self.init_eliza()
+		
+	def _get_eliza_response(self, input):
+		pass
 		

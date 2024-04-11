@@ -1,4 +1,4 @@
-[gd_scene load_steps=18 format=2]
+[gd_scene load_steps=20 format=2]
 
 [ext_resource path="res://eliza_font_main.tres" type="DynamicFont" id=1]
 [ext_resource path="res://Art/exit.png" type="Texture" id=2]
@@ -9,9 +9,11 @@
 [ext_resource path="res://Art/Eliza Character Parts/Mouths/mouth_smile_closed.png" type="Texture" id=7]
 [ext_resource path="res://Art/Eliza Character Parts/nose.png" type="Texture" id=8]
 [ext_resource path="res://UserInputText.gd" type="Script" id=9]
-[ext_resource path="res://ElizaDialogScene.py" type="Script" id=10]
+[ext_resource path="res://GameContainer.gd" type="Script" id=10]
 [ext_resource path="res://new_gradienttexture2d.tres" type="Texture" id=11]
 [ext_resource path="res://ElizaCharacter.gd" type="Script" id=12]
+[ext_resource path="res://MainDialogContainer.py" type="Script" id=13]
+[ext_resource path="res://InputBoxController.gd" type="Script" id=14]
 
 [sub_resource type="StyleBoxTexture" id=2]
 texture = ExtResource( 6 )
@@ -31,23 +33,24 @@ content_margin_left = 40.0
 
 [sub_resource type="StyleBoxEmpty" id=4]
 
-[node name="DialogPlayer" type="CanvasLayer"]
+[node name="GameContainer" type="CanvasLayer"]
 script = ExtResource( 10 )
 
-[node name="PanelContainer" type="PanelContainer" parent="."]
+[node name="MainDialogContainer" type="PanelContainer" parent="."]
 anchor_right = 1.0
 anchor_bottom = 1.0
 mouse_filter = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
 custom_styles/panel = SubResource( 2 )
+script = ExtResource( 13 )
 
-[node name="VBoxContainer" type="VBoxContainer" parent="PanelContainer"]
+[node name="VBoxContainer" type="VBoxContainer" parent="MainDialogContainer"]
 margin_right = 1192.0
 margin_bottom = 800.0
 mouse_filter = 2
 
-[node name="HBoxContainer" type="HBoxContainer" parent="PanelContainer/VBoxContainer"]
+[node name="HBoxContainer" type="HBoxContainer" parent="MainDialogContainer/VBoxContainer"]
 margin_right = 1192.0
 margin_bottom = 396.0
 mouse_filter = 2
@@ -55,23 +58,24 @@ size_flags_horizontal = 3
 size_flags_vertical = 3
 size_flags_stretch_ratio = 3.0
 
-[node name="MarginContainer" type="MarginContainer" parent="PanelContainer/VBoxContainer/HBoxContainer"]
+[node name="MarginContainer" type="MarginContainer" parent="MainDialogContainer/VBoxContainer/HBoxContainer"]
 margin_right = 731.0
 margin_bottom = 396.0
 size_flags_horizontal = 3
 size_flags_stretch_ratio = 8.0
 
-[node name="ElizaCharacter" type="PanelContainer" parent="PanelContainer/VBoxContainer/HBoxContainer"]
+[node name="ElizaCharacter" type="PanelContainer" parent="MainDialogContainer/VBoxContainer/HBoxContainer"]
 margin_left = 735.0
 margin_right = 1192.0
 margin_bottom = 396.0
 focus_mode = 2
 size_flags_horizontal = 3
+size_flags_vertical = 3
 size_flags_stretch_ratio = 5.0
 custom_styles/panel = SubResource( 3 )
 script = ExtResource( 12 )
 
-[node name="BaseTexture" type="TextureRect" parent="PanelContainer/VBoxContainer/HBoxContainer/ElizaCharacter"]
+[node name="BaseTexture" type="TextureRect" parent="MainDialogContainer/VBoxContainer/HBoxContainer/ElizaCharacter"]
 margin_right = 457.0
 margin_bottom = 396.0
 grow_horizontal = 0
@@ -80,7 +84,7 @@ texture = ExtResource( 3 )
 expand = true
 stretch_mode = 5
 
-[node name="EyebrowsTexture" type="TextureRect" parent="PanelContainer/VBoxContainer/HBoxContainer/ElizaCharacter"]
+[node name="EyebrowsTexture" type="TextureRect" parent="MainDialogContainer/VBoxContainer/HBoxContainer/ElizaCharacter"]
 margin_right = 457.0
 margin_bottom = 396.0
 grow_horizontal = 0
@@ -89,7 +93,7 @@ texture = ExtResource( 4 )
 expand = true
 stretch_mode = 5
 
-[node name="EyesTexture" type="TextureRect" parent="PanelContainer/VBoxContainer/HBoxContainer/ElizaCharacter"]
+[node name="EyesTexture" type="TextureRect" parent="MainDialogContainer/VBoxContainer/HBoxContainer/ElizaCharacter"]
 margin_right = 457.0
 margin_bottom = 396.0
 grow_horizontal = 0
@@ -98,7 +102,7 @@ texture = ExtResource( 5 )
 expand = true
 stretch_mode = 5
 
-[node name="NoseTexture" type="TextureRect" parent="PanelContainer/VBoxContainer/HBoxContainer/ElizaCharacter"]
+[node name="NoseTexture" type="TextureRect" parent="MainDialogContainer/VBoxContainer/HBoxContainer/ElizaCharacter"]
 margin_right = 457.0
 margin_bottom = 396.0
 grow_horizontal = 0
@@ -107,7 +111,7 @@ texture = ExtResource( 8 )
 expand = true
 stretch_mode = 5
 
-[node name="MouthTexture" type="TextureRect" parent="PanelContainer/VBoxContainer/HBoxContainer/ElizaCharacter"]
+[node name="MouthTexture" type="TextureRect" parent="MainDialogContainer/VBoxContainer/HBoxContainer/ElizaCharacter"]
 margin_right = 457.0
 margin_bottom = 396.0
 grow_horizontal = 0
@@ -116,14 +120,14 @@ texture = ExtResource( 7 )
 expand = true
 stretch_mode = 5
 
-[node name="HBoxContainer2" type="PanelContainer" parent="PanelContainer/VBoxContainer"]
+[node name="HBoxContainer2" type="PanelContainer" parent="MainDialogContainer/VBoxContainer"]
 margin_top = 400.0
 margin_right = 1192.0
 margin_bottom = 664.0
 size_flags_vertical = 3
 size_flags_stretch_ratio = 2.0
 
-[node name="ElizaDialogBox" type="TextureRect" parent="PanelContainer/VBoxContainer/HBoxContainer2"]
+[node name="ElizaDialogBox" type="TextureRect" parent="MainDialogContainer/VBoxContainer/HBoxContainer2"]
 margin_left = 7.0
 margin_top = 7.0
 margin_right = 1185.0
@@ -133,7 +137,7 @@ texture = ExtResource( 11 )
 expand = true
 stretch_mode = 1
 
-[node name="ElizaText" type="Label" parent="PanelContainer/VBoxContainer/HBoxContainer2/ElizaDialogBox"]
+[node name="ElizaText" type="Label" parent="MainDialogContainer/VBoxContainer/HBoxContainer2/ElizaDialogBox"]
 margin_left = 25.0
 margin_top = 25.0
 margin_right = 1060.0
@@ -146,13 +150,13 @@ custom_fonts/font = ExtResource( 1 )
 text = "This is some example text. Yay I'm so happy about this information! "
 autowrap = true
 
-[node name="HBoxContainer3" type="PanelContainer" parent="PanelContainer/VBoxContainer"]
+[node name="HBoxContainer3" type="PanelContainer" parent="MainDialogContainer/VBoxContainer"]
 margin_top = 668.0
 margin_right = 1192.0
 margin_bottom = 800.0
 size_flags_vertical = 3
 
-[node name="UserDialogBox" type="TextureRect" parent="PanelContainer/VBoxContainer/HBoxContainer3"]
+[node name="UserDialogBox" type="TextureRect" parent="MainDialogContainer/VBoxContainer/HBoxContainer3"]
 margin_left = 7.0
 margin_top = 7.0
 margin_right = 1185.0
@@ -161,7 +165,7 @@ texture = ExtResource( 11 )
 expand = true
 stretch_mode = 1
 
-[node name="PanelContainer" type="PanelContainer" parent="PanelContainer/VBoxContainer/HBoxContainer3/UserDialogBox"]
+[node name="UserInputBox" type="PanelContainer" parent="MainDialogContainer/VBoxContainer/HBoxContainer3/UserDialogBox"]
 anchor_top = 0.5
 anchor_right = 1.0
 anchor_bottom = 0.5
@@ -170,8 +174,9 @@ margin_top = -19.0
 margin_right = -30.0
 margin_bottom = 19.0
 custom_styles/panel = SubResource( 6 )
+script = ExtResource( 14 )
 
-[node name="UserInputText" type="LineEdit" parent="PanelContainer/VBoxContainer/HBoxContainer3/UserDialogBox/PanelContainer"]
+[node name="UserInputText" type="LineEdit" parent="MainDialogContainer/VBoxContainer/HBoxContainer3/UserDialogBox/UserInputBox"]
 margin_right = 1118.0
 margin_bottom = 38.0
 grow_horizontal = 2
@@ -182,7 +187,7 @@ caret_blink = true
 caret_blink_speed = 0.5
 script = ExtResource( 9 )
 
-[node name="Label" type="Label" parent="PanelContainer/VBoxContainer/HBoxContainer3/UserDialogBox/PanelContainer/UserInputText"]
+[node name="Input Symbol" type="Label" parent="MainDialogContainer/VBoxContainer/HBoxContainer3/UserDialogBox/UserInputBox/UserInputText"]
 anchor_top = 0.5
 anchor_bottom = 0.5
 margin_left = 8.0
@@ -208,5 +213,6 @@ custom_styles/normal = SubResource( 4 )
 icon = ExtResource( 2 )
 expand_icon = true
 
-[connection signal="gui_input" from="PanelContainer/VBoxContainer/HBoxContainer/ElizaCharacter" to="." method="_on_ElizaCharacter_gui_input"]
-[connection signal="gui_input" from="PanelContainer/VBoxContainer/HBoxContainer/ElizaCharacter/BaseTexture" to="." method="_on_ElizaCharacter_gui_input"]
+[connection signal="gui_input" from="MainDialogContainer/VBoxContainer/HBoxContainer/ElizaCharacter" to="MainDialogContainer" method="_on_ElizaCharacter_gui_input"]
+[connection signal="gui_input" from="MainDialogContainer/VBoxContainer/HBoxContainer/ElizaCharacter/BaseTexture" to="." method="_on_ElizaCharacter_gui_input"]
+[connection signal="gui_input" from="MainDialogContainer/VBoxContainer/HBoxContainer3/UserDialogBox/UserInputBox/UserInputText" to="MainDialogContainer/VBoxContainer/HBoxContainer3/UserDialogBox/UserInputBox/UserInputText" method="_gui_input"]
