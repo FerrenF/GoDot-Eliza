@@ -1,10 +1,15 @@
 from godot import exposed, export
 from godot import *
 
-import os
+from io import StringIO
+import os, sys
 import godot
 
-from eliza_python_translation import constant, encoding, util, elizalogic, elizascript, eliza
+p = os.path.abspath(os.getcwd())
+newp = p + "\\addons\\pythonscript\\windows-64\\lib\\site-packages\\eliza_python_translation\\"
+sys.path.insert(0,newp)
+
+from eliza_python_translation import elizaconstant, elizaencoding, elizautil, elizalogic, elizascript, eliza
 
 @exposed
 class MainDialogContainer(PanelContainer):
@@ -24,7 +29,7 @@ class MainDialogContainer(PanelContainer):
 	def init_eliza(self):
 		try:
 			script_str: StringIO = self._load_script(MainDialogContainer.script_name)
-		except RuntimeException as e:
+		except RuntimeError as e:
 			print("Failed to load file.")
 			exit(2)
 		script_str_str = script_str.getvalue()
@@ -57,7 +62,7 @@ class MainDialogContainer(PanelContainer):
 		try:
 			with open(scr_path, 'r') as file:
 				file_content = file.read()
-				stringio_obj = elizascript.StringIO(file_content)
+				stringio_obj = StringIO(file_content)
 				return stringio_obj
 		except FileNotFoundError as e:
 			print(f"Error: File '{scr_path}' not found.")

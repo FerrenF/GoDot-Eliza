@@ -2,3 +2,6 @@
 	path = addons/pythonscript/windows-64/lib/site-packages/eliza_python_translation
 	url = https://github.com/FerrenF/eliza-python-translation.git
 	ignore = dirty
+[submodule "addons/pythonscript/windows-64/lib/site-packages/eliza_python_translation"]
+	path = addons/pythonscript/windows-64/lib/site-packages/eliza_python_translation
+	url = https://github.com/FerrenF/eliza_python_translation
