@@ -33,7 +33,7 @@ func _gui_input(event):
 
 func handle_enter_pressed():
 	
-	get_node("../../../../..").call("_user_input_request",get_node(".").text)
+	get_node("../../../../../..").call("_user_input_request",get_node(".").text)
 	#_user_input_request(get_node(".").text)
 	clear_text()
 	pass
