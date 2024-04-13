@@ -91,6 +91,8 @@ class MainDialogContainer(PanelContainer):
 			print("Got response: ")
 			print(response)
 			node = self.get_node("MainContentContainer/VerticalLayoutContainer/MiddleRow/ElizaResponseArea/ElizaDialogBox/ElizaText")
-			node.text = response
+			
+			# Commented out for testing purposes of the scrolling text
+			#node.text = response
 		
 		

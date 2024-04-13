@@ -32,11 +32,11 @@ func _gui_input(event):
 			clear_text()
 		elif event.pressed and event.scancode == KEY_ENTER and get_node(".").text:
 			handle_enter_pressed()
-		
+
 	 return false
 
 func handle_enter_pressed():
-	
+
 	get_node("../../../../../../..").call("_user_input_request",get_node(".").text)
 	#_user_input_request(get_node(".").text)
 	clear_text()

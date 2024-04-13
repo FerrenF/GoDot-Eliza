@@ -187,6 +187,7 @@ expand = true
 stretch_mode = 1
 
 [node name="ElizaText" type="Label" parent="MainContentBackground/MainContentContainer/VerticalLayoutContainer/MiddleRow/ElizaResponseArea/ElizaDialogBox" groups=["dynamic_text_size"]]
+visible = false
 anchor_left = 0.05
 anchor_top = 0.1
 anchor_right = 0.95
@@ -199,6 +200,12 @@ custom_fonts/font = ExtResource( 1 )
 text = "This is some example text. Yay I'm so happy about this information! "
 autowrap = true
 script = ExtResource( 15 )
+
+[node name="ScrollContainer" type="ScrollContainer" parent="MainContentBackground/MainContentContainer/VerticalLayoutContainer/MiddleRow/ElizaResponseArea"]
+margin_right = 625.0
+margin_bottom = 188.0
+
+[node name="DialogHistory" type="VBoxContainer" parent="MainContentBackground/MainContentContainer/VerticalLayoutContainer/MiddleRow/ElizaResponseArea/ScrollContainer"]
 
 [node name="BottomRow" type="PanelContainer" parent="MainContentBackground/MainContentContainer/VerticalLayoutContainer"]
 margin_top = 425.0
@@ -236,7 +243,7 @@ size_flags_horizontal = 3
 size_flags_vertical = 3
 custom_fonts/font = SubResource( 8 )
 custom_styles/normal = SubResource( 5 )
-text = "Input text"
+placeholder_text = "Input text"
 caret_blink = true
 caret_blink_speed = 0.5
 script = ExtResource( 9 )
@@ -271,4 +278,5 @@ script = ExtResource( 16 )
 
 [connection signal="resized" from="MainContentBackground" to="." method="window_resize_handler"]
 [connection signal="gui_input" from="MainContentBackground/MainContentContainer/VerticalLayoutContainer/BottomRow/InputArea/UserDialogBox/UserInputBox/UserInputText" to="MainContentBackground/MainContentContainer/VerticalLayoutContainer/BottomRow/InputArea/UserDialogBox/UserInputBox/UserInputText" method="_gui_input"]
+[connection signal="text_entered" from="MainContentBackground/MainContentContainer/VerticalLayoutContainer/BottomRow/InputArea/UserDialogBox/UserInputBox/UserInputText" to="." method="_on_UserInputText_text_entered"]
 [connection signal="pressed" from="MainContentBackground/MainContentContainer/Quit" to="MainContentBackground/MainContentContainer/Quit" method="_on_Quit_pressed"]
