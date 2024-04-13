@@ -1,4 +1,4 @@
-[gd_scene load_steps=20 format=2]
+[gd_scene load_steps=24 format=2]
 
 [ext_resource path="res://eliza_font_main.tres" type="DynamicFont" id=1]
 [ext_resource path="res://Art/exit.png" type="Texture" id=2]
@@ -14,10 +14,12 @@
 [ext_resource path="res://ElizaCharacter.gd" type="Script" id=12]
 [ext_resource path="res://MainDialogContainer.py" type="Script" id=13]
 [ext_resource path="res://InputBoxController.gd" type="Script" id=14]
+[ext_resource path="res://ElizaText.gd" type="Script" id=15]
+[ext_resource path="res://Quit.gd" type="Script" id=16]
 
 [sub_resource type="StyleBoxTexture" id=2]
 texture = ExtResource( 6 )
-region_rect = Rect2( 0, 0, 140, 140 )
+region_rect = Rect2( 0, 0, 164, 164 )
 
 [sub_resource type="StyleBoxEmpty" id=3]
 
@@ -28,6 +30,12 @@ corner_radius_top_right = 10
 corner_radius_bottom_right = 10
 corner_radius_bottom_left = 10
 
+[sub_resource type="DynamicFontData" id=7]
+font_path = "res://OpenSans-Regular.ttf"
+
+[sub_resource type="DynamicFont" id=8]
+font_data = SubResource( 7 )
+
 [sub_resource type="StyleBoxEmpty" id=5]
 content_margin_left = 40.0
 
@@ -36,35 +44,44 @@ content_margin_left = 40.0
 [node name="GameContainer" type="CanvasLayer"]
 script = ExtResource( 10 )
 
-[node name="MainDialogContainer" type="PanelContainer" parent="."]
+[node name="MainContentBackground" type="PanelContainer" parent="."]
 anchor_right = 1.0
 anchor_bottom = 1.0
+rect_min_size = Vector2( 500, 500 )
 mouse_filter = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
 custom_styles/panel = SubResource( 2 )
 script = ExtResource( 13 )
 
-[node name="VBoxContainer" type="VBoxContainer" parent="MainDialogContainer"]
-margin_right = 1192.0
-margin_bottom = 800.0
+[node name="MainContentContainer" type="ReferenceRect" parent="MainContentBackground"]
+margin_right = 800.0
+margin_bottom = 600.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="VerticalLayoutContainer" type="VBoxContainer" parent="MainContentBackground/MainContentContainer"]
+anchor_left = 0.1
+anchor_top = 0.1
+anchor_right = 0.9
+anchor_bottom = 0.9
 mouse_filter = 2
 
-[node name="TopRow" type="HBoxContainer" parent="MainDialogContainer/VBoxContainer"]
-margin_right = 1192.0
-margin_bottom = 396.0
+[node name="TopRow" type="HBoxContainer" parent="MainContentBackground/MainContentContainer/VerticalLayoutContainer"]
+margin_right = 640.0
+margin_bottom = 217.0
 mouse_filter = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
 size_flags_stretch_ratio = 4.0
 
-[node name="ElizaArea" type="ReferenceRect" parent="MainDialogContainer/VBoxContainer/TopRow"]
-margin_right = 1192.0
-margin_bottom = 396.0
+[node name="ElizaArea" type="ReferenceRect" parent="MainContentBackground/MainContentContainer/VerticalLayoutContainer/TopRow"]
+margin_right = 640.0
+margin_bottom = 217.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 
-[node name="MarginContainer" type="MarginContainer" parent="MainDialogContainer/VBoxContainer/TopRow/ElizaArea"]
+[node name="MarginContainer" type="MarginContainer" parent="MainContentBackground/MainContentContainer/VerticalLayoutContainer/TopRow/ElizaArea"]
 anchor_left = 1.0
 anchor_top = 1.0
 anchor_right = 1.0
@@ -72,11 +89,11 @@ anchor_bottom = 1.0
 size_flags_horizontal = 3
 size_flags_stretch_ratio = 8.0
 
-[node name="ElizaCharacter" type="PanelContainer" parent="MainDialogContainer/VBoxContainer/TopRow/ElizaArea"]
+[node name="ElizaCharacter" type="PanelContainer" parent="MainContentBackground/MainContentContainer/VerticalLayoutContainer/TopRow/ElizaArea"]
 anchor_left = 0.75
-anchor_top = 1.0
+anchor_top = 0.986
 anchor_right = 0.75
-anchor_bottom = 1.0
+anchor_bottom = 1.1
 grow_horizontal = 2
 grow_vertical = 0
 rect_min_size = Vector2( 250, 250 )
@@ -87,7 +104,7 @@ size_flags_stretch_ratio = 5.0
 custom_styles/panel = SubResource( 3 )
 script = ExtResource( 12 )
 
-[node name="BaseTexture" type="TextureRect" parent="MainDialogContainer/VBoxContainer/TopRow/ElizaArea/ElizaCharacter"]
+[node name="BaseTexture" type="TextureRect" parent="MainContentBackground/MainContentContainer/VerticalLayoutContainer/TopRow/ElizaArea/ElizaCharacter"]
 margin_right = 250.0
 margin_bottom = 250.0
 grow_horizontal = 2
@@ -99,7 +116,7 @@ texture = ExtResource( 3 )
 expand = true
 stretch_mode = 5
 
-[node name="EyebrowsTexture" type="TextureRect" parent="MainDialogContainer/VBoxContainer/TopRow/ElizaArea/ElizaCharacter"]
+[node name="EyebrowsTexture" type="TextureRect" parent="MainContentBackground/MainContentContainer/VerticalLayoutContainer/TopRow/ElizaArea/ElizaCharacter"]
 margin_right = 250.0
 margin_bottom = 250.0
 grow_horizontal = 2
@@ -111,7 +128,7 @@ texture = ExtResource( 4 )
 expand = true
 stretch_mode = 5
 
-[node name="EyesTexture" type="TextureRect" parent="MainDialogContainer/VBoxContainer/TopRow/ElizaArea/ElizaCharacter"]
+[node name="EyesTexture" type="TextureRect" parent="MainContentBackground/MainContentContainer/VerticalLayoutContainer/TopRow/ElizaArea/ElizaCharacter"]
 margin_right = 250.0
 margin_bottom = 250.0
 grow_horizontal = 2
@@ -123,7 +140,7 @@ texture = ExtResource( 5 )
 expand = true
 stretch_mode = 5
 
-[node name="NoseTexture" type="TextureRect" parent="MainDialogContainer/VBoxContainer/TopRow/ElizaArea/ElizaCharacter"]
+[node name="NoseTexture" type="TextureRect" parent="MainContentBackground/MainContentContainer/VerticalLayoutContainer/TopRow/ElizaArea/ElizaCharacter"]
 margin_right = 250.0
 margin_bottom = 250.0
 grow_horizontal = 2
@@ -135,7 +152,7 @@ texture = ExtResource( 8 )
 expand = true
 stretch_mode = 5
 
-[node name="MouthTexture" type="TextureRect" parent="MainDialogContainer/VBoxContainer/TopRow/ElizaArea/ElizaCharacter"]
+[node name="MouthTexture" type="TextureRect" parent="MainContentBackground/MainContentContainer/VerticalLayoutContainer/TopRow/ElizaArea/ElizaCharacter"]
 margin_right = 250.0
 margin_bottom = 250.0
 grow_horizontal = 2
@@ -147,33 +164,33 @@ texture = ExtResource( 7 )
 expand = true
 stretch_mode = 5
 
-[node name="MiddleRow" type="PanelContainer" parent="MainDialogContainer/VBoxContainer"]
-margin_top = 400.0
-margin_right = 1192.0
-margin_bottom = 697.0
+[node name="MiddleRow" type="PanelContainer" parent="MainContentBackground/MainContentContainer/VerticalLayoutContainer"]
+margin_top = 221.0
+margin_right = 640.0
+margin_bottom = 421.0
 rect_min_size = Vector2( 0, 200 )
 size_flags_vertical = 3
 size_flags_stretch_ratio = 3.0
 
-[node name="ElizaResponseArea" type="ReferenceRect" parent="MainDialogContainer/VBoxContainer/MiddleRow"]
+[node name="ElizaResponseArea" type="ReferenceRect" parent="MainContentBackground/MainContentContainer/VerticalLayoutContainer/MiddleRow"]
 margin_left = 7.0
 margin_top = 7.0
-margin_right = 1185.0
-margin_bottom = 290.0
+margin_right = 633.0
+margin_bottom = 193.0
 
-[node name="ElizaDialogBox" type="TextureRect" parent="MainDialogContainer/VBoxContainer/MiddleRow/ElizaResponseArea"]
+[node name="ElizaDialogBox" type="TextureRect" parent="MainContentBackground/MainContentContainer/VerticalLayoutContainer/MiddleRow/ElizaResponseArea"]
+anchor_right = 1.0
 anchor_bottom = 1.0
-margin_right = 1178.0
 size_flags_vertical = 3
 texture = ExtResource( 11 )
 expand = true
 stretch_mode = 1
 
-[node name="ElizaText" type="Label" parent="MainDialogContainer/VBoxContainer/MiddleRow/ElizaResponseArea/ElizaDialogBox"]
-margin_left = 25.0
-margin_top = 25.0
-margin_right = 1060.0
-margin_bottom = 300.0
+[node name="ElizaText" type="Label" parent="MainContentBackground/MainContentContainer/VerticalLayoutContainer/MiddleRow/ElizaResponseArea/ElizaDialogBox" groups=["dynamic_text_size"]]
+anchor_left = 0.05
+anchor_top = 0.1
+anchor_right = 0.95
+anchor_bottom = 0.9
 grow_horizontal = 2
 grow_vertical = 2
 size_flags_vertical = 5
@@ -181,49 +198,50 @@ custom_colors/font_color_shadow = Color( 0.00784314, 0.211765, 0.917647, 1 )
 custom_fonts/font = ExtResource( 1 )
 text = "This is some example text. Yay I'm so happy about this information! "
 autowrap = true
+script = ExtResource( 15 )
 
-[node name="BottomRow" type="PanelContainer" parent="MainDialogContainer/VBoxContainer"]
-margin_top = 701.0
-margin_right = 1192.0
-margin_bottom = 800.0
+[node name="BottomRow" type="PanelContainer" parent="MainContentBackground/MainContentContainer/VerticalLayoutContainer"]
+margin_top = 425.0
+margin_right = 640.0
+margin_bottom = 480.0
 size_flags_vertical = 3
 
-[node name="InputArea" type="ReferenceRect" parent="MainDialogContainer/VBoxContainer/BottomRow"]
+[node name="InputArea" type="ReferenceRect" parent="MainContentBackground/MainContentContainer/VerticalLayoutContainer/BottomRow"]
 margin_left = 7.0
 margin_top = 7.0
-margin_right = 1185.0
-margin_bottom = 92.0
+margin_right = 633.0
+margin_bottom = 48.0
 
-[node name="UserDialogBox" type="TextureRect" parent="MainDialogContainer/VBoxContainer/BottomRow/InputArea"]
-margin_right = 1178.0
-margin_bottom = 85.0
+[node name="UserDialogBox" type="TextureRect" parent="MainContentBackground/MainContentContainer/VerticalLayoutContainer/BottomRow/InputArea"]
+anchor_right = 1.0
+anchor_bottom = 1.0
 texture = ExtResource( 11 )
 expand = true
 stretch_mode = 1
 
-[node name="UserInputBox" type="PanelContainer" parent="MainDialogContainer/VBoxContainer/BottomRow/InputArea/UserDialogBox"]
-anchor_top = 0.5
-anchor_right = 1.0
-anchor_bottom = 0.5
-margin_left = 30.0
-margin_top = -19.0
-margin_right = -30.0
-margin_bottom = 19.0
+[node name="UserInputBox" type="PanelContainer" parent="MainContentBackground/MainContentContainer/VerticalLayoutContainer/BottomRow/InputArea/UserDialogBox"]
+anchor_left = 0.1
+anchor_top = 0.25
+anchor_right = 0.9
+anchor_bottom = 0.75
 custom_styles/panel = SubResource( 6 )
 script = ExtResource( 14 )
 
-[node name="UserInputText" type="LineEdit" parent="MainDialogContainer/VBoxContainer/BottomRow/InputArea/UserDialogBox/UserInputBox"]
-margin_right = 1118.0
-margin_bottom = 38.0
+[node name="UserInputText" type="LineEdit" parent="MainContentBackground/MainContentContainer/VerticalLayoutContainer/BottomRow/InputArea/UserDialogBox/UserInputBox" groups=["dynamic_text_size"]]
+margin_right = 500.8
+margin_bottom = 23.0
 grow_horizontal = 2
 grow_vertical = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+custom_fonts/font = SubResource( 8 )
 custom_styles/normal = SubResource( 5 )
 text = "Input text"
 caret_blink = true
 caret_blink_speed = 0.5
 script = ExtResource( 9 )
 
-[node name="Input Symbol" type="Label" parent="MainDialogContainer/VBoxContainer/BottomRow/InputArea/UserDialogBox/UserInputBox/UserInputText"]
+[node name="Input Symbol" type="Label" parent="MainContentBackground/MainContentContainer/VerticalLayoutContainer/BottomRow/InputArea/UserDialogBox/UserInputBox/UserInputText"]
 anchor_top = 0.5
 anchor_bottom = 0.5
 margin_left = 8.0
@@ -236,11 +254,12 @@ custom_fonts/font = ExtResource( 1 )
 text = ">"
 valign = 1
 
-[node name="Quit" type="Button" parent="."]
-anchor_left = 0.99
-anchor_right = 1.0
-margin_left = -45.0
-margin_top = 15.0
+[node name="Quit" type="Button" parent="MainContentBackground/MainContentContainer"]
+anchor_left = 0.98
+anchor_top = 0.02
+anchor_right = 0.98
+anchor_bottom = 0.02
+margin_left = -56.92
 margin_bottom = 45.0
 rect_min_size = Vector2( 45, 45 )
 size_flags_horizontal = 11
@@ -248,5 +267,8 @@ size_flags_vertical = 3
 custom_styles/normal = SubResource( 4 )
 icon = ExtResource( 2 )
 expand_icon = true
+script = ExtResource( 16 )
 
-[connection signal="gui_input" from="MainDialogContainer/VBoxContainer/BottomRow/InputArea/UserDialogBox/UserInputBox/UserInputText" to="MainDialogContainer/VBoxContainer/BottomRow/InputArea/UserDialogBox/UserInputBox/UserInputText" method="_gui_input"]
+[connection signal="resized" from="MainContentBackground" to="." method="window_resize_handler"]
+[connection signal="gui_input" from="MainContentBackground/MainContentContainer/VerticalLayoutContainer/BottomRow/InputArea/UserDialogBox/UserInputBox/UserInputText" to="MainContentBackground/MainContentContainer/VerticalLayoutContainer/BottomRow/InputArea/UserDialogBox/UserInputBox/UserInputText" method="_gui_input"]
+[connection signal="pressed" from="MainContentBackground/MainContentContainer/Quit" to="MainContentBackground/MainContentContainer/Quit" method="_on_Quit_pressed"]

@@ -20,6 +20,10 @@ var initial_input_cleared = false
 func clear_text():
 	get_node(".").text = ""
 	
+func do_resize_font():
+	var parent_height = get_parent_area_size().y
+	var current_font = get_node(".").get("custom_fonts/font")
+	current_font.set("size", parent_height * 0.50)
 
 func _gui_input(event):
 	if event is InputEventKey:
@@ -33,7 +37,7 @@ func _gui_input(event):
 
 func handle_enter_pressed():
 	
-	get_node("../../../../../..").call("_user_input_request",get_node(".").text)
+	get_node("../../../../../../..").call("_user_input_request",get_node(".").text)
 	#_user_input_request(get_node(".").text)
 	clear_text()
 	pass

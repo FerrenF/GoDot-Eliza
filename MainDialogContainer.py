@@ -90,7 +90,7 @@ class MainDialogContainer(PanelContainer):
 		if MainDialogContainer.DEBUG:
 			print("Got response: ")
 			print(response)
-			node = self.get_node("VBoxContainer/MiddleRow/ElizaResponseArea/ElizaDialogBox/ElizaText")
+			node = self.get_node("MainContentContainer/VerticalLayoutContainer/MiddleRow/ElizaResponseArea/ElizaDialogBox/ElizaText")
 			node.text = response
 		
 		
