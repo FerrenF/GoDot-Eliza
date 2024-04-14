@@ -3,17 +3,19 @@ class_name GameContainer
 
 extends CanvasLayer
 
-
-# Declare member variables here. Examples:
-# var a = 2
-# var b = "text"
-
 export var min_win = Vector2(500,500)
+
+const InputResponse = preload("res://TestInpResponse.tscn")
+
+export (int) var max_lines_remembered := 30
+var max_scroll_length := 0
+
+onready var def_siz = OS.window_size
+
+onready var eliza_chatbox_node = $MainContentBackground/MainContentContainer/VerticalLayoutContainer/MiddleRow/ElizaResponseArea/ElizaChat
 
 func _ready():
 	OS.min_window_size = min_win
-
-onready var def_siz = OS.window_size
 
 func window_resize_handler():
 	if not def_siz:
@@ -30,3 +32,4 @@ func window_resize_handler():
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 #func _process(delta):
 #	pass
+

@@ -1,6 +1,8 @@
 extends LineEdit
 
 
+
+var root_relative = "../../../../../../.."
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	grab_focus()
@@ -32,12 +34,12 @@ func _gui_input(event):
 			clear_text()
 		elif event.pressed and event.scancode == KEY_ENTER and get_node(".").text:
 			handle_enter_pressed()
-		
+
 	 return false
 
 func handle_enter_pressed():
-	
-	get_node("../../../../../../..").call("_user_input_request",get_node(".").text)
+
+	get_node(root_relative).call("_user_input_request",get_node(".").text)
 	#_user_input_request(get_node(".").text)
 	clear_text()
 	pass

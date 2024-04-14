@@ -1,0 +1,28 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://Styles/menuGradient.tres" type="Gradient" id=1]
+
+[sub_resource type="GradientTexture" id=2]
+gradient = ExtResource( 1 )
+width = 650
+
+[node name="MenuRoot" type="Node2D"]
+
+[node name="MenuCanvas" type="CanvasLayer" parent="."]
+
+[node name="Reference" type="ReferenceRect" parent="MenuCanvas"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_right = 40.0
+margin_bottom = 40.0
+
+[node name="BackgrundTexture" type="TextureRect" parent="MenuCanvas/Reference"]
+anchor_left = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.33
+rect_rotation = 90.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+texture = SubResource( 2 )
+stretch_mode = 1
+flip_h = true

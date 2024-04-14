@@ -17,7 +17,7 @@ class MainDialogContainer(PanelContainer):
    
 	# member variables here, example:
 	name = export(str)
-
+	chatbox_node = "MainContentContainer/VerticalLayoutContainer/MiddleRow/ElizaResponseArea/ElizaChat"
 	DEBUG = True
 	script_name = "doctor.txt"
 	script_obj = elizascript.Script()
@@ -73,15 +73,18 @@ class MainDialogContainer(PanelContainer):
 			if MainDialogContainer.DEBUG:
 				print("Received input but script is not loaded... Dropping...")
 			return
+		
+		node = self.get_node(self.chatbox_node)
+		node.call("add_user_request", input)
+		
 		if MainDialogContainer.DEBUG:
 				print("Received input: ")
 				print(input)
-		self._get_eliza_response(input)
+		self._process_eliza_response(input)
 			
-	def _on_ElizaCharacter_gui_input(self, event):
-		pass
 		
-	def _get_eliza_response(self, input):
+	def _process_eliza_response(self, input):
+		
 		if not MainDialogContainer.load_status:
 			if MainDialogContainer.DEBUG:
 				print("Problem receiving response")
@@ -89,8 +92,8 @@ class MainDialogContainer(PanelContainer):
 		response = self.eliza_obj.response(str(input))
 		if MainDialogContainer.DEBUG:
 			print("Got response: ")
-			print(response)
-			node = self.get_node("MainContentContainer/VerticalLayoutContainer/MiddleRow/ElizaResponseArea/ElizaDialogBox/ElizaText")
-			node.text = response
-		
+			print(response)			
+			node = self.get_node(self.chatbox_node)
+			node.call("add_eliza_response", response)
+			
 		
