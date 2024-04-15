@@ -43,3 +43,10 @@ func handle_enter_pressed():
 	#_user_input_request(get_node(".").text)
 	clear_text()
 	pass
+
+
+func _on_Submit_pressed():
+		get_node(root_relative).call("_user_input_request",get_node(".").text)
+	#_user_input_request(get_node(".").text)
+		clear_text()
+		pass # Replace with function body.
