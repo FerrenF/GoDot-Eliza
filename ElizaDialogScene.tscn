@@ -1,4 +1,4 @@
-[gd_scene load_steps=25 format=2]
+[gd_scene load_steps=27 format=2]
 
 [ext_resource path="res://eliza_font_main.tres" type="DynamicFont" id=1]
 [ext_resource path="res://Art/exit.png" type="Texture" id=2]
@@ -14,6 +14,7 @@
 [ext_resource path="res://ElizaCharacter.gd" type="Script" id=12]
 [ext_resource path="res://MainDialogContainer.py" type="Script" id=13]
 [ext_resource path="res://InputBoxController.gd" type="Script" id=14]
+[ext_resource path="res://customTextEffect.gd" type="Script" id=15]
 [ext_resource path="res://Quit.gd" type="Script" id=16]
 [ext_resource path="res://ElizaDialogStyle.tres" type="Theme" id=17]
 [ext_resource path="res://ElizaChat.gd" type="Script" id=18]
@@ -23,6 +24,9 @@ texture = ExtResource( 6 )
 region_rect = Rect2( 0, 0, 164, 164 )
 
 [sub_resource type="StyleBoxEmpty" id=3]
+
+[sub_resource type="RichTextEffect" id=9]
+script = ExtResource( 15 )
 
 [sub_resource type="StyleBoxFlat" id=6]
 bg_color = Color( 0.196078, 0.196078, 0.196078, 1 )
@@ -195,6 +199,7 @@ anchor_bottom = 0.9
 theme = ExtResource( 17 )
 bbcode_enabled = true
 scroll_following = true
+custom_effects = [ SubResource( 9 ) ]
 script = ExtResource( 18 )
 
 [node name="BottomRow" type="PanelContainer" parent="MainContentBackground/MainContentContainer/VerticalLayoutContainer"]

@@ -13,9 +13,15 @@ _global_script_classes=[ {
 "class": "GameContainer",
 "language": "GDScript",
 "path": "res://GameContainer.gd"
+}, {
+"base": "RichTextEffect",
+"class": "RichTextType",
+"language": "GDScript",
+"path": "res://customTextEffect.gd"
 } ]
 _global_script_class_icons={
-"GameContainer": ""
+"GameContainer": "",
+"RichTextType": ""
 }
 
 [application]
