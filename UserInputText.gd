@@ -33,13 +33,15 @@ func _gui_input(event):
 			initial_input_cleared = true
 			clear_text()
 		elif event.pressed and event.scancode == KEY_ENTER and get_node(".").text:
-			handle_enter_pressed()
+			handle_submit()
 
 	 return false
 
-func handle_enter_pressed():
+func handle_submit():
+	_on_Submit_pressed()
 
-	get_node(root_relative).call("_user_input_request",get_node(".").text)
+func _on_Submit_pressed():
+		get_node(root_relative).call("_user_input_request",get_node(".").text)
 	#_user_input_request(get_node(".").text)
-	clear_text()
-	pass
+		clear_text()
+		pass # Replace with function body.
