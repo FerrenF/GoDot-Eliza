@@ -24,6 +24,10 @@ config/name="Go Dot- Eliza"
 run/main_scene="res://ElizaDialogScene.tscn"
 config/icon="res://icon.png"
 
+[autoload]
+
+CanvasManager="*res://CanvasManager.tscn"
+
 [display]
 
 window/size/width=800
