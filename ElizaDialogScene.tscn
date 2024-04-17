@@ -14,9 +14,9 @@
 [ext_resource path="res://ElizaCharacter.gd" type="Script" id=12]
 [ext_resource path="res://MainDialogContainer.py" type="Script" id=13]
 [ext_resource path="res://InputBoxController.gd" type="Script" id=14]
-[ext_resource path="res://Quit.gd" type="Script" id=16]
+[ext_resource path="res://UI/Quit.gd" type="Script" id=16]
 [ext_resource path="res://ElizaDialogStyle.tres" type="Theme" id=17]
-[ext_resource path="res://ElizaChat.gd" type="Script" id=18]
+[ext_resource path="res://UI/ElizaChat.gd" type="Script" id=18]
 [ext_resource path="res://Styles/MainControlTheme.tres" type="Theme" id=19]
 
 [sub_resource type="StyleBoxTexture" id=2]

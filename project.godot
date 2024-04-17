@@ -24,6 +24,10 @@ config/name="Go Dot- Eliza"
 run/main_scene="res://ElizaDialogScene.tscn"
 config/icon="res://icon.png"
 
+[autoload]
+
+CanvasManager="*res://Scenes/CanvasManager.tscn"
+
 [display]
 
 window/size/width=800
@@ -34,6 +38,10 @@ window/stretch/aspect="keep"
 [gdnative]
 
 singletons=[ "res://pythonscript.gdnlib" ]
+
+[global]
+
+canvas=false
 
 [gui]
 
