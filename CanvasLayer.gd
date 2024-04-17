@@ -1,10 +1,9 @@
 extends CanvasLayer
 
-export(Texture) var empty_cursor = null
-export(Texture) var real_cursor = null
-
 func _ready():
-	Input.set_custom_mouse_cursor(real_cursor, Input.CURSOR_ARROW)
+	#Input.set_mouse_mode(Input.MOUSE_MODE_HIDDEN)
+	pass
+	
 	# dialog_text = load_dialog_text() # doesn't work but we might need it
 
 func _process(delta):
