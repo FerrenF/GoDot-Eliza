@@ -1,6 +1,5 @@
-[gd_scene load_steps=28 format=2]
-
-[ext_resource path="res://eliza_font_main.tres" type="DynamicFont" id=1]
+[gd_scene load_steps=24 format=2]
+[ext_resource path="res://Fonts/eliza_font_main.tres" type="DynamicFont" id=1]
 [ext_resource path="res://Art/exit.png" type="Texture" id=2]
 [ext_resource path="res://Art/Eliza Character Parts/base.png" type="Texture" id=3]
 [ext_resource path="res://Art/Eliza Character Parts/eyebrows.png" type="Texture" id=4]
@@ -10,13 +9,12 @@
 [ext_resource path="res://Art/Eliza Character Parts/nose.png" type="Texture" id=8]
 [ext_resource path="res://UserInputText.gd" type="Script" id=9]
 [ext_resource path="res://GameContainer.gd" type="Script" id=10]
-[ext_resource path="res://new_gradienttexture2d.tres" type="Texture" id=11]
+[ext_resource path="res://Art/home.png" type="Texture" id=11]
 [ext_resource path="res://ElizaCharacter.gd" type="Script" id=12]
 [ext_resource path="res://MainDialogContainer.py" type="Script" id=13]
-[ext_resource path="res://InputBoxController.gd" type="Script" id=14]
+[ext_resource path="res://Styles/ElizaDialogStyle.tres" type="Theme" id=17]
 [ext_resource path="res://UI/customTextEffect.gd" type="Script" id=15]
 [ext_resource path="res://UI/Quit.gd" type="Script" id=16]
-[ext_resource path="res://ElizaDialogStyle.tres" type="Theme" id=17]
 [ext_resource path="res://UI/ElizaChat.gd" type="Script" id=18]
 [ext_resource path="res://Styles/MainControlTheme.tres" type="Theme" id=19]
 
@@ -185,15 +183,13 @@ margin_top = 7.0
 margin_right = 633.0
 margin_bottom = 193.0
 
-[node name="ElizaDialogBox" type="TextureRect" parent="MainContentBackground/MainContentContainer/VerticalLayoutContainer/MiddleRow/ElizaResponseArea"]
-anchor_right = 1.0
-anchor_bottom = 1.0
-size_flags_vertical = 3
-texture = ExtResource( 11 )
-expand = true
-stretch_mode = 1
+[node name="ElizaResponsePanel" type="Panel" parent="MainContentBackground/MainContentContainer/VerticalLayoutContainer/MiddleRow"]
+margin_left = 7.0
+margin_top = 7.0
+margin_right = 633.0
+margin_bottom = 193.0
 
-[node name="ElizaChat" type="RichTextLabel" parent="MainContentBackground/MainContentContainer/VerticalLayoutContainer/MiddleRow/ElizaResponseArea" groups=["dynamic_text_size"]]
+[node name="ElizaChat" type="RichTextLabel" parent="MainContentBackground/MainContentContainer/VerticalLayoutContainer/MiddleRow/ElizaResponsePanel" groups=["dynamic_text_size"]]
 anchor_left = 0.02
 anchor_top = 0.1
 anchor_right = 0.98
@@ -216,14 +212,13 @@ margin_top = 7.0
 margin_right = 633.0
 margin_bottom = 48.0
 
-[node name="UserDialogBox" type="TextureRect" parent="MainContentBackground/MainContentContainer/VerticalLayoutContainer/BottomRow/InputArea"]
-anchor_right = 1.0
-anchor_bottom = 1.0
-texture = ExtResource( 11 )
-expand = true
-stretch_mode = 1
+[node name="UserInputPanel" type="Panel" parent="MainContentBackground/MainContentContainer/VerticalLayoutContainer/BottomRow"]
+margin_left = 7.0
+margin_top = 7.0
+margin_right = 633.0
+margin_bottom = 48.0
 
-[node name="ControlContent" type="HBoxContainer" parent="MainContentBackground/MainContentContainer/VerticalLayoutContainer/BottomRow/InputArea"]
+[node name="ControlContent" type="HBoxContainer" parent="MainContentBackground/MainContentContainer/VerticalLayoutContainer/BottomRow/UserInputPanel"]
 anchor_left = 0.05
 anchor_top = 0.08
 anchor_right = 0.95
@@ -232,15 +227,14 @@ size_flags_horizontal = 3
 size_flags_vertical = 3
 custom_constants/separation = 10
 
-[node name="UserInputBox" type="PanelContainer" parent="MainContentBackground/MainContentContainer/VerticalLayoutContainer/BottomRow/InputArea/ControlContent"]
+[node name="UserInputBox" type="PanelContainer" parent="MainContentBackground/MainContentContainer/VerticalLayoutContainer/BottomRow/UserInputPanel/ControlContent"]
 margin_right = 474.0
 margin_bottom = 34.0
 size_flags_horizontal = 3
 size_flags_stretch_ratio = 6.0
 custom_styles/panel = SubResource( 6 )
-script = ExtResource( 14 )
 
-[node name="UserInputText" type="LineEdit" parent="MainContentBackground/MainContentContainer/VerticalLayoutContainer/BottomRow/InputArea/ControlContent/UserInputBox" groups=["dynamic_text_size"]]
+[node name="UserInputText" type="LineEdit" parent="MainContentBackground/MainContentContainer/VerticalLayoutContainer/BottomRow/UserInputPanel/ControlContent/UserInputBox" groups=["dynamic_text_size"]]
 margin_right = 474.0
 margin_bottom = 34.0
 grow_horizontal = 2
@@ -255,7 +249,7 @@ caret_blink = true
 caret_blink_speed = 0.5
 script = ExtResource( 9 )
 
-[node name="Input Symbol" type="Label" parent="MainContentBackground/MainContentContainer/VerticalLayoutContainer/BottomRow/InputArea/ControlContent/UserInputBox/UserInputText"]
+[node name="Input Symbol" type="Label" parent="MainContentBackground/MainContentContainer/VerticalLayoutContainer/BottomRow/UserInputPanel/ControlContent/UserInputBox/UserInputText"]
 anchor_top = 0.5
 anchor_bottom = 0.5
 margin_left = 8.0
@@ -268,19 +262,34 @@ custom_fonts/font = ExtResource( 1 )
 text = ">"
 valign = 1
 
-[node name="Submit" type="Button" parent="MainContentBackground/MainContentContainer/VerticalLayoutContainer/BottomRow/InputArea/ControlContent"]
+[node name="Submit" type="Button" parent="MainContentBackground/MainContentContainer/VerticalLayoutContainer/BottomRow/UserInputPanel/ControlContent"]
 margin_left = 484.0
 margin_right = 563.0
 margin_bottom = 34.0
 size_flags_horizontal = 3
 text = "Submit"
 
-[node name="Quit" type="Button" parent="MainContentBackground/MainContentContainer"]
-anchor_left = 0.98
+[node name="MenuContainer" type="HFlowContainer" parent="MainContentBackground/MainContentContainer"]
+anchor_left = 0.88
 anchor_top = 0.02
 anchor_right = 0.98
-anchor_bottom = 0.02
-margin_left = -56.92
+anchor_bottom = 0.05
+margin_left = -45.0
+margin_bottom = 94.0
+
+[node name="Home" type="Button" parent="MainContentBackground/MainContentContainer/MenuContainer"]
+margin_right = 60.0
+margin_bottom = 45.0
+rect_min_size = Vector2( 45, 45 )
+size_flags_horizontal = 11
+size_flags_vertical = 3
+custom_styles/normal = SubResource( 4 )
+icon = ExtResource( 11 )
+expand_icon = true
+
+[node name="Quit2" type="Button" parent="MainContentBackground/MainContentContainer/MenuContainer"]
+margin_left = 64.0
+margin_right = 124.0
 margin_bottom = 45.0
 rect_min_size = Vector2( 45, 45 )
 size_flags_horizontal = 11
@@ -288,9 +297,9 @@ size_flags_vertical = 3
 custom_styles/normal = SubResource( 4 )
 icon = ExtResource( 2 )
 expand_icon = true
-script = ExtResource( 16 )
 
 [connection signal="resized" from="MainContentBackground" to="." method="window_resize_handler"]
-[connection signal="gui_input" from="MainContentBackground/MainContentContainer/VerticalLayoutContainer/BottomRow/InputArea/ControlContent/UserInputBox/UserInputText" to="MainContentBackground/MainContentContainer/VerticalLayoutContainer/BottomRow/InputArea/ControlContent/UserInputBox/UserInputText" method="_gui_input"]
-[connection signal="pressed" from="MainContentBackground/MainContentContainer/VerticalLayoutContainer/BottomRow/InputArea/ControlContent/Submit" to="MainContentBackground/MainContentContainer/VerticalLayoutContainer/BottomRow/InputArea/ControlContent/UserInputBox/UserInputText" method="handle_submit"]
-[connection signal="pressed" from="MainContentBackground/MainContentContainer/Quit" to="MainContentBackground/MainContentContainer/Quit" method="_on_Quit_pressed"]
+[connection signal="gui_input" from="MainContentBackground/MainContentContainer/VerticalLayoutContainer/BottomRow/UserInputPanel/ControlContent/UserInputBox/UserInputText" to="MainContentBackground/MainContentContainer/VerticalLayoutContainer/BottomRow/UserInputPanel/ControlContent/UserInputBox/UserInputText" method="_gui_input"]
+[connection signal="pressed" from="MainContentBackground/MainContentContainer/VerticalLayoutContainer/BottomRow/UserInputPanel/ControlContent/Submit" to="MainContentBackground/MainContentContainer/VerticalLayoutContainer/BottomRow/UserInputPanel/ControlContent/UserInputBox/UserInputText" method="handle_submit"]
+[connection signal="pressed" from="MainContentBackground/MainContentContainer/MenuContainer/Home" to="." method="_on_Home_pressed"]
+[connection signal="pressed" from="MainContentBackground/MainContentContainer/MenuContainer/Quit2" to="." method="_on_Quit_pressed"]

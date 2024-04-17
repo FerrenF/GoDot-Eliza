@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/exit.png-cd6d9fdfef4ae556e144d13e03d24a54.stex"
+path="res://.import/Eliza_BG_strip.png-4d76d50d4a27c688f7ae12a1b17ce58d.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Art/exit.png"
-dest_files=[ "res://.import/exit.png-cd6d9fdfef4ae556e144d13e03d24a54.stex" ]
+source_file="res://Art/Eliza_BG_strip.png"
+dest_files=[ "res://.import/Eliza_BG_strip.png-4d76d50d4a27c688f7ae12a1b17ce58d.stex" ]
 
 [params]
 

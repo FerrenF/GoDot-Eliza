@@ -17,7 +17,7 @@ class MainDialogContainer(PanelContainer):
    
 	# member variables here, example:
 	name = export(str)
-	chatbox_node = "MainContentContainer/VerticalLayoutContainer/MiddleRow/ElizaResponseArea/ElizaChat"
+	chatbox_node = "MainContentContainer/VerticalLayoutContainer/MiddleRow/ElizaResponsePanel/ElizaChat"
 	DEBUG = True
 	script_name = "doctor.txt"
 	script_obj = elizascript.Script()
