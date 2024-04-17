@@ -21,7 +21,7 @@ _global_script_class_icons={
 [application]
 
 config/name="Go Dot- Eliza"
-run/main_scene="res://ElizaDialogScene.tscn"
+run/main_scene="res://Scenes/menu.tscn"
 config/icon="res://icon.png"
 
 [autoload]

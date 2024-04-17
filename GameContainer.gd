@@ -23,3 +23,9 @@ func window_resize_handler():
 	get_tree().call_group("dynamic_text_size", "do_resize_font")
 
 
+func _on_Quit_pressed():
+	get_tree().quit(0)
+	
+func _on_Home_pressed():
+	get_tree().change_scene("res://Scenes/menu.tscn")
+

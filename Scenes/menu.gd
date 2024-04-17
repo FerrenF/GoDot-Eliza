@@ -1,4 +1,4 @@
-extends PanelContainer
+extends Node2D
 
 
 # Declare member variables here. Examples:
@@ -16,6 +16,12 @@ func _ready():
 #	pass
 
 
+func start_button_pressed():
+	load_eliza_scene()
+	
+func load_eliza_scene():
+	get_tree().change_scene("res://Scenes/ElizaDialogScene.tscn")
 
 
-
+func _on_Quit_pressed():
+	get_tree().quit()
