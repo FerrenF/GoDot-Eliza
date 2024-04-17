@@ -1,0 +1,9 @@
+[gd_resource type="Theme" load_steps=3 format=2]
+
+[ext_resource path="res://Fonts/FallbackFont.tres" type="DynamicFont" id=1]
+[ext_resource path="res://Styles/submitButtonStyle.tres" type="StyleBox" id=2]
+
+[resource]
+default_font = ExtResource( 1 )
+Button/fonts/ControlFont = ExtResource( 1 )
+Button/styles/normal = ExtResource( 2 )
