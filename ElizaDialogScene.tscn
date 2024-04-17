@@ -15,9 +15,10 @@
 [ext_resource path="res://MainDialogContainer.py" type="Script" id=13]
 [ext_resource path="res://InputBoxController.gd" type="Script" id=14]
 [ext_resource path="res://UI/customTextEffect.gd" type="Script" id=15]
-[ext_resource path="res://Quit.gd" type="Script" id=16]
+[ext_resource path="res://UI/Quit.gd" type="Script" id=16]
 [ext_resource path="res://ElizaDialogStyle.tres" type="Theme" id=17]
-[ext_resource path="res://ElizaChat.gd" type="Script" id=18]
+[ext_resource path="res://UI/ElizaChat.gd" type="Script" id=18]
+[ext_resource path="res://Styles/MainControlTheme.tres" type="Theme" id=19]
 
 [sub_resource type="StyleBoxTexture" id=2]
 texture = ExtResource( 6 )
@@ -56,6 +57,7 @@ rect_min_size = Vector2( 500, 500 )
 mouse_filter = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
+theme = ExtResource( 19 )
 custom_styles/panel = SubResource( 2 )
 script = ExtResource( 13 )
 
@@ -221,21 +223,31 @@ texture = ExtResource( 11 )
 expand = true
 stretch_mode = 1
 
-[node name="UserInputBox" type="PanelContainer" parent="MainContentBackground/MainContentContainer/VerticalLayoutContainer/BottomRow/InputArea/UserDialogBox"]
-anchor_left = 0.1
-anchor_top = 0.25
-anchor_right = 0.9
-anchor_bottom = 0.75
+[node name="ControlContent" type="HBoxContainer" parent="MainContentBackground/MainContentContainer/VerticalLayoutContainer/BottomRow/InputArea"]
+anchor_left = 0.05
+anchor_top = 0.08
+anchor_right = 0.95
+anchor_bottom = 0.92
+size_flags_horizontal = 3
+size_flags_vertical = 3
+custom_constants/separation = 10
+
+[node name="UserInputBox" type="PanelContainer" parent="MainContentBackground/MainContentContainer/VerticalLayoutContainer/BottomRow/InputArea/ControlContent"]
+margin_right = 474.0
+margin_bottom = 34.0
+size_flags_horizontal = 3
+size_flags_stretch_ratio = 6.0
 custom_styles/panel = SubResource( 6 )
 script = ExtResource( 14 )
 
-[node name="UserInputText" type="LineEdit" parent="MainContentBackground/MainContentContainer/VerticalLayoutContainer/BottomRow/InputArea/UserDialogBox/UserInputBox" groups=["dynamic_text_size"]]
-margin_right = 500.8
-margin_bottom = 23.0
+[node name="UserInputText" type="LineEdit" parent="MainContentBackground/MainContentContainer/VerticalLayoutContainer/BottomRow/InputArea/ControlContent/UserInputBox" groups=["dynamic_text_size"]]
+margin_right = 474.0
+margin_bottom = 34.0
 grow_horizontal = 2
 grow_vertical = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
+size_flags_stretch_ratio = 6.0
 custom_fonts/font = SubResource( 8 )
 custom_styles/normal = SubResource( 5 )
 placeholder_text = "Input text"
@@ -243,7 +255,7 @@ caret_blink = true
 caret_blink_speed = 0.5
 script = ExtResource( 9 )
 
-[node name="Input Symbol" type="Label" parent="MainContentBackground/MainContentContainer/VerticalLayoutContainer/BottomRow/InputArea/UserDialogBox/UserInputBox/UserInputText"]
+[node name="Input Symbol" type="Label" parent="MainContentBackground/MainContentContainer/VerticalLayoutContainer/BottomRow/InputArea/ControlContent/UserInputBox/UserInputText"]
 anchor_top = 0.5
 anchor_bottom = 0.5
 margin_left = 8.0
@@ -255,6 +267,13 @@ size_flags_vertical = 5
 custom_fonts/font = ExtResource( 1 )
 text = ">"
 valign = 1
+
+[node name="Submit" type="Button" parent="MainContentBackground/MainContentContainer/VerticalLayoutContainer/BottomRow/InputArea/ControlContent"]
+margin_left = 484.0
+margin_right = 563.0
+margin_bottom = 34.0
+size_flags_horizontal = 3
+text = "Submit"
 
 [node name="Quit" type="Button" parent="MainContentBackground/MainContentContainer"]
 anchor_left = 0.98
@@ -272,5 +291,6 @@ expand_icon = true
 script = ExtResource( 16 )
 
 [connection signal="resized" from="MainContentBackground" to="." method="window_resize_handler"]
-[connection signal="gui_input" from="MainContentBackground/MainContentContainer/VerticalLayoutContainer/BottomRow/InputArea/UserDialogBox/UserInputBox/UserInputText" to="MainContentBackground/MainContentContainer/VerticalLayoutContainer/BottomRow/InputArea/UserDialogBox/UserInputBox/UserInputText" method="_gui_input"]
+[connection signal="gui_input" from="MainContentBackground/MainContentContainer/VerticalLayoutContainer/BottomRow/InputArea/ControlContent/UserInputBox/UserInputText" to="MainContentBackground/MainContentContainer/VerticalLayoutContainer/BottomRow/InputArea/ControlContent/UserInputBox/UserInputText" method="_gui_input"]
+[connection signal="pressed" from="MainContentBackground/MainContentContainer/VerticalLayoutContainer/BottomRow/InputArea/ControlContent/Submit" to="MainContentBackground/MainContentContainer/VerticalLayoutContainer/BottomRow/InputArea/ControlContent/UserInputBox/UserInputText" method="handle_submit"]
 [connection signal="pressed" from="MainContentBackground/MainContentContainer/Quit" to="MainContentBackground/MainContentContainer/Quit" method="_on_Quit_pressed"]
