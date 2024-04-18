@@ -3,4 +3,6 @@
 
 Work In Progress
 
-![eliza-preview_0.1.jpg](eliza-preview_0.1.jpg)
+![preview1.png](preview1.png)
+
+![preview2.png](preview2.png)
