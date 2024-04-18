@@ -1,6 +1,6 @@
 [gd_scene load_steps=5 format=2]
 
-[ext_resource path="res://Art/Eliza_BG_strip.png" type="Texture" id=1]
+[ext_resource path="res://Art/Menu_bg.png" type="Texture" id=1]
 [ext_resource path="res://Fonts/ElizaMenuTitleFont.tres" type="DynamicFont" id=2]
 [ext_resource path="res://Scenes/menu.gd" type="Script" id=3]
 [ext_resource path="res://Styles/MenuControlTheme.tres" type="Theme" id=4]
@@ -17,12 +17,15 @@ anchor_bottom = 1.0
 [node name="BackgrundTexture" type="TextureRect" parent="MenuCanvas"]
 anchor_right = 1.0
 anchor_bottom = 1.0
+margin_left = -136.0
+margin_top = -440.0
+margin_right = 135.0
+margin_bottom = 102.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 texture = ExtResource( 1 )
 expand = true
 stretch_mode = 7
-flip_h = true
 
 [node name="MenuLayoutVertical" type="VBoxContainer" parent="MenuCanvas"]
 anchor_right = 1.0
@@ -36,12 +39,14 @@ size_flags_vertical = 3
 size_flags_stretch_ratio = 3.0
 
 [node name="Title" type="Label" parent="MenuCanvas/MenuLayoutVertical/TitleContainer"]
-margin_left = 304.0
-margin_top = 85.0
-margin_right = 496.0
-margin_bottom = 188.0
+margin_left = 240.0
+margin_top = 59.0
+margin_right = 559.0
+margin_bottom = 214.0
 custom_fonts/font = ExtResource( 2 )
-text = "ELIZA"
+text = "Meet
+ELIZA"
+align = 1
 
 [node name="MidContainer" type="Control" parent="MenuCanvas/MenuLayoutVertical"]
 margin_top = 277.0
@@ -56,27 +61,9 @@ anchor_left = 0.25
 anchor_right = 0.75
 anchor_bottom = 1.0
 
-[node name="ControlMenuSummary" type="Control" parent="MenuCanvas/MenuLayoutVertical/MidContainer/SubLayoutRows"]
-margin_right = 400.0
-margin_bottom = 111.0
-size_flags_horizontal = 3
-size_flags_vertical = 3
-
-[node name="ContainerMenuSummary" type="PanelContainer" parent="MenuCanvas/MenuLayoutVertical/MidContainer/SubLayoutRows/ControlMenuSummary"]
-anchor_right = 1.0
-anchor_bottom = 1.0
-size_flags_horizontal = 3
-size_flags_vertical = 3
-
-[node name="RichTextLabel" type="RichTextLabel" parent="MenuCanvas/MenuLayoutVertical/MidContainer/SubLayoutRows/ControlMenuSummary/ContainerMenuSummary"]
-margin_right = 400.0
-margin_bottom = 111.0
-text = "ELIZA is an early natural language processing experiment by Joseph Weisenbaumm. This game is a  simulation of the recreation of this chatbot, made for learning purposes. ELIZA was originally designed to respond to user input as if it were an elizabethian style therapist. We have elevated that here with some art and convienence."
-
 [node name="ControlMenuButtons" type="Control" parent="MenuCanvas/MenuLayoutVertical/MidContainer/SubLayoutRows"]
-margin_top = 115.0
 margin_right = 400.0
-margin_bottom = 227.0
+margin_bottom = 111.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 
@@ -87,7 +74,7 @@ anchor_bottom = 1.0
 
 [node name="ReferenceRect" type="ReferenceRect" parent="MenuCanvas/MenuLayoutVertical/MidContainer/SubLayoutRows/ControlMenuButtons/ContainerMenuButtons"]
 margin_right = 200.0
-margin_bottom = 112.0
+margin_bottom = 111.0
 
 [node name="MenuButtonContainer" type="VBoxContainer" parent="MenuCanvas/MenuLayoutVertical/MidContainer/SubLayoutRows/ControlMenuButtons/ContainerMenuButtons/ReferenceRect"]
 anchor_left = 0.5
@@ -99,28 +86,49 @@ size_flags_horizontal = 0
 alignment = 1
 
 [node name="Start" type="Button" parent="MenuCanvas/MenuLayoutVertical/MidContainer/SubLayoutRows/ControlMenuButtons/ContainerMenuButtons/ReferenceRect/MenuButtonContainer"]
-margin_top = 10.0
+margin_top = 9.0
 margin_right = 125.0
-margin_bottom = 30.0
+margin_bottom = 29.0
 text = "CHAT WITH ELIZA"
 
 [node name="Quit" type="Button" parent="MenuCanvas/MenuLayoutVertical/MidContainer/SubLayoutRows/ControlMenuButtons/ContainerMenuButtons/ReferenceRect/MenuButtonContainer"]
-margin_top = 34.0
+margin_top = 33.0
 margin_right = 125.0
-margin_bottom = 54.0
+margin_bottom = 53.0
 text = "Quit"
 
 [node name="Credits" type="Button" parent="MenuCanvas/MenuLayoutVertical/MidContainer/SubLayoutRows/ControlMenuButtons/ContainerMenuButtons/ReferenceRect/MenuButtonContainer"]
-margin_top = 58.0
+margin_top = 57.0
 margin_right = 125.0
-margin_bottom = 78.0
+margin_bottom = 77.0
 text = "Credits"
 
 [node name="Learn More" type="Button" parent="MenuCanvas/MenuLayoutVertical/MidContainer/SubLayoutRows/ControlMenuButtons/ContainerMenuButtons/ReferenceRect/MenuButtonContainer"]
-margin_top = 82.0
+margin_top = 81.0
 margin_right = 125.0
-margin_bottom = 102.0
+margin_bottom = 101.0
 text = "Learn More..."
+
+[node name="ControlMenuSummary" type="Control" parent="MenuCanvas/MenuLayoutVertical/MidContainer/SubLayoutRows"]
+margin_top = 115.0
+margin_right = 400.0
+margin_bottom = 227.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="ContainerMenuSummary" type="PanelContainer" parent="MenuCanvas/MenuLayoutVertical/MidContainer/SubLayoutRows/ControlMenuSummary"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+__meta__ = {
+"_edit_use_anchors_": true
+}
+
+[node name="RichTextLabel" type="RichTextLabel" parent="MenuCanvas/MenuLayoutVertical/MidContainer/SubLayoutRows/ControlMenuSummary/ContainerMenuSummary"]
+margin_right = 400.0
+margin_bottom = 112.0
+text = "ELIZA is an early natural language processing experiment by Joseph Weisenbaumm. This game is a  simulation of the recreation of this chatbot, made for learning purposes. ELIZA was originally designed to respond to user input as if it were an elizabethian style therapist. We have elevated that here with some art and convienence."
 
 [node name="FootConainer" type="Control" parent="MenuCanvas/MenuLayoutVertical"]
 margin_top = 508.0
