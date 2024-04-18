@@ -9,6 +9,11 @@
 config_version=4
 
 _global_script_classes=[ {
+"base": "AudioStreamPlayer",
+"class": "BGAudio",
+"language": "GDScript",
+"path": "res://Scenes/BackgroundAudio.gd"
+}, {
 "base": "CanvasLayer",
 "class": "GameContainer",
 "language": "GDScript",
@@ -20,6 +25,7 @@ _global_script_classes=[ {
 "path": "res://UI/customTextEffect.gd"
 } ]
 _global_script_class_icons={
+"BGAudio": "",
 "GameContainer": "",
 "RichTextType": ""
 }
