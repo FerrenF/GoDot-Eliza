@@ -22,7 +22,7 @@ _global_script_classes=[ {
 "base": "RichTextEffect",
 "class": "RichTextType",
 "language": "GDScript",
-"path": "res://UI/customTextEffect.gd"
+"path": "res://UI/typewriteEffectFast.gd"
 } ]
 _global_script_class_icons={
 "BGAudio": "",

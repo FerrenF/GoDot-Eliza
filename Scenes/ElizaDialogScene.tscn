@@ -1,4 +1,5 @@
-[gd_scene load_steps=28 format=2]
+
+[gd_scene load_steps=26 format=2]
 
 [ext_resource path="res://Fonts/eliza_font_main.tres" type="DynamicFont" id=1]
 [ext_resource path="res://Art/exit.png" type="Texture" id=2]
@@ -12,9 +13,9 @@
 [ext_resource path="res://GameContainer.gd" type="Script" id=10]
 [ext_resource path="res://Art/home.png" type="Texture" id=11]
 [ext_resource path="res://ElizaCharacter.gd" type="Script" id=12]
+[ext_resource path="res://UI/typewriteEffect.tres" type="RichTextEffect" id=15]
 [ext_resource path="res://Scenes/BackgroundAudio.gd" type="Script" id=13]
 [ext_resource path="res://Art/sound_enabled.png" type="Texture" id=14]
-[ext_resource path="res://UI/customTextEffect.gd" type="Script" id=15]
 [ext_resource path="res://Scenes/Sound.gd" type="Script" id=16]
 [ext_resource path="res://Styles/ElizaDialogStyle.tres" type="Theme" id=17]
 [ext_resource path="res://UI/ElizaChat.gd" type="Script" id=18]
@@ -26,9 +27,6 @@ region_rect = Rect2( 0, 0, 164, 164 )
 
 [sub_resource type="StyleBoxEmpty" id=3]
 
-[sub_resource type="RichTextEffect" id=9]
-script = ExtResource( 15 )
-
 [sub_resource type="StyleBoxFlat" id=6]
 bg_color = Color( 0.196078, 0.196078, 0.196078, 1 )
 corner_radius_top_left = 10
@@ -37,7 +35,7 @@ corner_radius_bottom_right = 10
 corner_radius_bottom_left = 10
 
 [sub_resource type="DynamicFontData" id=7]
-font_path = "res://OpenSans-Regular.ttf"
+font_path = "res://Fonts/PixelifySans-Regular.ttf"
 
 [sub_resource type="DynamicFont" id=8]
 font_data = SubResource( 7 )
@@ -199,8 +197,7 @@ focus_mode = 2
 theme = ExtResource( 17 )
 bbcode_enabled = true
 scroll_following = true
-selection_enabled = true
-custom_effects = [ SubResource( 9 ) ]
+custom_effects = [ ExtResource( 15 ) ]
 script = ExtResource( 18 )
 
 [node name="BottomRow" type="PanelContainer" parent="MainContentBackground/MainContentContainer/VerticalLayoutContainer"]
