@@ -1,4 +1,4 @@
-[gd_scene load_steps=25 format=2]
+[gd_scene load_steps=28 format=2]
 
 [ext_resource path="res://Fonts/eliza_font_main.tres" type="DynamicFont" id=1]
 [ext_resource path="res://Art/exit.png" type="Texture" id=2]
@@ -12,7 +12,10 @@
 [ext_resource path="res://GameContainer.gd" type="Script" id=10]
 [ext_resource path="res://Art/home.png" type="Texture" id=11]
 [ext_resource path="res://ElizaCharacter.gd" type="Script" id=12]
+[ext_resource path="res://Scenes/BackgroundAudio.gd" type="Script" id=13]
+[ext_resource path="res://Art/sound_enabled.png" type="Texture" id=14]
 [ext_resource path="res://UI/customTextEffect.gd" type="Script" id=15]
+[ext_resource path="res://Scenes/Sound.gd" type="Script" id=16]
 [ext_resource path="res://Styles/ElizaDialogStyle.tres" type="Theme" id=17]
 [ext_resource path="res://UI/ElizaChat.gd" type="Script" id=18]
 [ext_resource path="res://Styles/MainControlTheme.tres" type="Theme" id=19]
@@ -270,15 +273,15 @@ size_flags_horizontal = 3
 text = "Submit"
 
 [node name="MenuContainer" type="HFlowContainer" parent="MainContentBackground/MainContentContainer"]
-anchor_left = 0.88
+anchor_left = 0.86
 anchor_top = 0.02
 anchor_right = 0.98
 anchor_bottom = 0.05
-margin_left = -45.0
+margin_left = -50.0
 margin_bottom = 94.0
 
 [node name="Home" type="Button" parent="MainContentBackground/MainContentContainer/MenuContainer"]
-margin_right = 60.0
+margin_right = 46.0
 margin_bottom = 45.0
 rect_min_size = Vector2( 45, 45 )
 size_flags_horizontal = 11
@@ -288,8 +291,8 @@ icon = ExtResource( 11 )
 expand_icon = true
 
 [node name="Quit2" type="Button" parent="MainContentBackground/MainContentContainer/MenuContainer"]
-margin_left = 64.0
-margin_right = 124.0
+margin_left = 50.0
+margin_right = 96.0
 margin_bottom = 45.0
 rect_min_size = Vector2( 45, 45 )
 size_flags_horizontal = 11
@@ -298,9 +301,25 @@ custom_styles/normal = SubResource( 4 )
 icon = ExtResource( 2 )
 expand_icon = true
 
+[node name="Sound" type="Button" parent="MainContentBackground/MainContentContainer/MenuContainer"]
+margin_left = 100.0
+margin_right = 146.0
+margin_bottom = 45.0
+rect_min_size = Vector2( 45, 45 )
+size_flags_horizontal = 11
+size_flags_vertical = 3
+custom_styles/normal = SubResource( 4 )
+icon = ExtResource( 14 )
+expand_icon = true
+script = ExtResource( 16 )
+
+[node name="BackgroundAudio" type="AudioStreamPlayer" parent="."]
+script = ExtResource( 13 )
+
 [connection signal="tree_exiting" from="." to="." method="_on_GameContainer_tree_exiting"]
 [connection signal="resized" from="MainContentBackground" to="." method="window_resize_handler"]
 [connection signal="gui_input" from="MainContentBackground/MainContentContainer/VerticalLayoutContainer/BottomRow/UserInputPanel/ControlContent/UserInputBox/UserInputText" to="MainContentBackground/MainContentContainer/VerticalLayoutContainer/BottomRow/UserInputPanel/ControlContent/UserInputBox/UserInputText" method="_gui_input"]
 [connection signal="pressed" from="MainContentBackground/MainContentContainer/VerticalLayoutContainer/BottomRow/UserInputPanel/ControlContent/Submit" to="MainContentBackground/MainContentContainer/VerticalLayoutContainer/BottomRow/UserInputPanel/ControlContent/UserInputBox/UserInputText" method="handle_submit"]
 [connection signal="pressed" from="MainContentBackground/MainContentContainer/MenuContainer/Home" to="." method="_on_Home_pressed"]
 [connection signal="pressed" from="MainContentBackground/MainContentContainer/MenuContainer/Quit2" to="." method="_on_Quit_pressed"]
+[connection signal="pressed" from="MainContentBackground/MainContentContainer/MenuContainer/Sound" to="MainContentBackground/MainContentContainer/MenuContainer/Sound" method="_toggleButtonState"]

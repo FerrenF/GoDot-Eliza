@@ -1,0 +1,15 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+path="res://.import/9. Harris Heller - Warm Peach_tail.mp3-7e29a9961dc13195fcc141bcb1051e6b.mp3str"
+
+[deps]
+
+source_file="res://Sound/9. Harris Heller - Warm Peach_tail.mp3"
+dest_files=[ "res://.import/9. Harris Heller - Warm Peach_tail.mp3-7e29a9961dc13195fcc141bcb1051e6b.mp3str" ]
+
+[params]
+
+loop=false
+loop_offset=0
