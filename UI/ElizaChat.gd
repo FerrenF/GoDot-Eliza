@@ -7,6 +7,7 @@ var user_request_text_color = "white"
 var eliza_name_text_color = "blue"
 var eliza_response_text_color = "white"
 
+
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	pass # Replace with function body.
