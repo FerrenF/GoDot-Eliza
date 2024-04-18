@@ -1,8 +1,5 @@
 extends LineEdit
 
-
-
-var root_relative = "../../../../../../.."
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	grab_focus()
@@ -41,7 +38,5 @@ func handle_submit():
 	_on_Submit_pressed()
 
 func _on_Submit_pressed():
-		get_node(root_relative).call("_user_input_request",get_node(".").text)
-	#_user_input_request(get_node(".").text)
+		autoloadpy.call("_user_input_request",get_node(".").text)
 		clear_text()
-		pass # Replace with function body.
