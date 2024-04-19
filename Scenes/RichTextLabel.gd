@@ -10,7 +10,6 @@ var escript = "ELIZA is an early natural language processing experiment by Josep
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	self.bbcode_text = "[typewrite]"+escript+"[/typewrite]"
-	pass
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 #func _process(delta):

@@ -21,14 +21,20 @@ func append_bbline(line, typewrite=false, wrapper=[]):
 	
 	
 	# strip all typewriting effects.
-	for n in range(len(li)-1,0,-1):
+
+	var regex = RegEx.new()
+	regex.compile("(.*)\\[typewrite\\](.*?)\\[\\/typewrite\\](.*)")
+
+	for n in range(li.size() - 1, -1, -1):
 		var st = li[n]
-		var s = st.find('[typewrite]')
-		if s != -1:
-			st.erase(s,len('[typewrite]'))
-			s = st.find('[/typewrite]')
-			if s != -1:
-				st.erase(s,len('[/typewrite]'))
+		var matches = regex.search_all(st)
+		
+		for mtch in matches:
+			var before_typewrite = mtch.get_string(1)  # Content before [typewrite] tag
+			var typewrite_content = mtch.get_string(2)  # Content within [typewrite] tags
+			var after_typewrite = mtch.get_string(3)  # Content after [/typewrite] tag
+			st = before_typewrite + typewrite_content + after_typewrite
+		
 		li[n] = st
 	
 	# Add one back if we need it

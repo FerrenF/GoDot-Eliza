@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=2]
+[gd_scene load_steps=9 format=2]
 
 [ext_resource path="res://Art/Menu_bg.png" type="Texture" id=1]
 [ext_resource path="res://Fonts/ElizaMenuTitleFont.tres" type="DynamicFont" id=2]
@@ -7,6 +7,7 @@
 [ext_resource path="res://Scenes/RichTextLabel.gd" type="Script" id=5]
 [ext_resource path="res://UI/typewriteEffect.tres" type="RichTextEffect" id=6]
 [ext_resource path="res://Scenes/PanelContainerFlicker.gd" type="Script" id=7]
+[ext_resource path="res://UI/LearnMore.gd" type="Script" id=8]
 
 [node name="MenuRoot" type="Node2D"]
 script = ExtResource( 3 )
@@ -113,6 +114,7 @@ margin_top = 93.0
 margin_right = 152.0
 margin_bottom = 113.0
 text = "Learn More..."
+script = ExtResource( 8 )
 
 [node name="FootConainer" type="Control" parent="MenuCanvas/MenuLayoutVertical"]
 margin_top = 458.0
@@ -130,6 +132,10 @@ margin_bottom = 96.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 
+[node name="ReferenceRect" type="ReferenceRect" parent="MenuCanvas/MenuLayoutVertical/FootConainer/ControlMenuSummary"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+
 [node name="RichTextLabel" type="RichTextLabel" parent="MenuCanvas/MenuLayoutVertical/FootConainer/ControlMenuSummary"]
 anchor_left = 0.08
 anchor_top = 0.15
@@ -141,9 +147,8 @@ selection_enabled = true
 custom_effects = [ ExtResource( 6 ) ]
 script = ExtResource( 5 )
 
-[node name="ReferenceRect" type="ReferenceRect" parent="MenuCanvas/MenuLayoutVertical/FootConainer/ControlMenuSummary"]
-anchor_right = 1.0
-anchor_bottom = 1.0
-
 [connection signal="pressed" from="MenuCanvas/MenuLayoutVertical/MidContainer/ControlMenuButtons/ContainerMenuButtons/ReferenceRect/MenuButtonContainer/Start" to="." method="start_button_pressed"]
 [connection signal="pressed" from="MenuCanvas/MenuLayoutVertical/MidContainer/ControlMenuButtons/ContainerMenuButtons/ReferenceRect/MenuButtonContainer/Quit" to="." method="_on_Quit_pressed"]
+[connection signal="mouse_entered" from="MenuCanvas/MenuLayoutVertical/MidContainer/ControlMenuButtons/ContainerMenuButtons/ReferenceRect/MenuButtonContainer/Learn More" to="MenuCanvas/MenuLayoutVertical/MidContainer/ControlMenuButtons/ContainerMenuButtons/ReferenceRect/MenuButtonContainer/Learn More" method="_lmbtnOver"]
+[connection signal="mouse_exited" from="MenuCanvas/MenuLayoutVertical/MidContainer/ControlMenuButtons/ContainerMenuButtons/ReferenceRect/MenuButtonContainer/Learn More" to="MenuCanvas/MenuLayoutVertical/MidContainer/ControlMenuButtons/ContainerMenuButtons/ReferenceRect/MenuButtonContainer/Learn More" method="_lmbtnOut"]
+[connection signal="pressed" from="MenuCanvas/MenuLayoutVertical/MidContainer/ControlMenuButtons/ContainerMenuButtons/ReferenceRect/MenuButtonContainer/Learn More" to="MenuCanvas/MenuLayoutVertical/MidContainer/ControlMenuButtons/ContainerMenuButtons/ReferenceRect/MenuButtonContainer/Learn More" method="_lmbtnPress"]

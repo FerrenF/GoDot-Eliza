@@ -12,8 +12,9 @@ func _process(_delta):
 
 func _on_text_submitted(_new_text):
 	clear()
-
-
+	
+export var response_char_limit = 256
+export var errmsg_toolong = "WOW I AM NOT GOING TO READ ALL OF THAT"
 var initial_input_cleared = false
 
 func clear_text():
@@ -38,5 +39,16 @@ func handle_submit():
 	_on_Submit_pressed()
 
 func _on_Submit_pressed():
-		autoloadpy.call("_user_input_request",get_node(".").text)
+	var t = get_node(".").text
+	
+	if t == "":
+		#reject
+		return
+		
+	if len(t) > response_char_limit:
+		autoloadpy.call("_add_eliza_response", errmsg_toolong)
 		clear_text()
+		return
+		
+	autoloadpy.call("_user_input_request",t)
+	clear_text()
