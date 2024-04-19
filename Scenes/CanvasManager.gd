@@ -8,4 +8,3 @@ func _ready():
 func _process(delta):
 	$Sprite.global_position = $Sprite.get_global_mouse_position()
 
-
