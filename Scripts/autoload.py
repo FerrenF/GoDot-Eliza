@@ -21,7 +21,7 @@ def dbg_msg(str):
 class autoload(Node):
 
 	chatbox_node = ""
-	DEBUG = True
+	DEBUG = False
 	script_name = "doctor.txt"
 	init_status = False
 	load_status = False
