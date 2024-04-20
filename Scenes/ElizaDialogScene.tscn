@@ -1,4 +1,4 @@
-[gd_scene load_steps=26 format=2]
+[gd_scene load_steps=30 format=2]
 
 [ext_resource path="res://Fonts/eliza_font_main.tres" type="DynamicFont" id=1]
 [ext_resource path="res://Art/exit.png" type="Texture" id=2]
@@ -19,12 +19,38 @@
 [ext_resource path="res://Styles/ElizaDialogStyle.tres" type="Theme" id=17]
 [ext_resource path="res://UI/ElizaChat.gd" type="Script" id=18]
 [ext_resource path="res://Styles/MainControlTheme.tres" type="Theme" id=19]
+[ext_resource path="res://Art/Eliza Character Parts/Mouths/mouth_plain_open.png" type="Texture" id=20]
+[ext_resource path="res://Art/Eliza Character Parts/Mouths/mouth_plain_closed.png" type="Texture" id=21]
+[ext_resource path="res://Art/Eliza Character Parts/Mouths/mouth_smile_open.png" type="Texture" id=22]
 
 [sub_resource type="StyleBoxTexture" id=2]
 texture = ExtResource( 6 )
 region_rect = Rect2( 0, 0, 164, 164 )
 
 [sub_resource type="StyleBoxEmpty" id=3]
+
+[sub_resource type="SpriteFrames" id=10]
+animations = [ {
+"frames": [ ExtResource( 7 ) ],
+"loop": true,
+"name": "default",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 21 ) ],
+"loop": true,
+"name": "neutral",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 7 ), ExtResource( 22 ), ExtResource( 7 ) ],
+"loop": true,
+"name": "speak_happy",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 21 ), ExtResource( 20 ), ExtResource( 21 ) ],
+"loop": true,
+"name": "speak_neutral",
+"speed": 5.0
+} ]
 
 [sub_resource type="StyleBoxFlat" id=9]
 bg_color = Color( 1, 1, 1, 1 )
@@ -158,6 +184,7 @@ expand = true
 stretch_mode = 5
 
 [node name="MouthTexture" type="TextureRect" parent="MainContentBackground/MainContentContainer/VerticalLayoutContainer/TopRow/ElizaArea/ElizaCharacter"]
+visible = false
 margin_right = 250.0
 margin_bottom = 250.0
 grow_horizontal = 2
@@ -168,6 +195,26 @@ size_flags_vertical = 3
 texture = ExtResource( 7 )
 expand = true
 stretch_mode = 5
+
+[node name="MouthNode" type="ReferenceRect" parent="MainContentBackground/MainContentContainer/VerticalLayoutContainer/TopRow/ElizaArea/ElizaCharacter"]
+margin_right = 250.0
+margin_bottom = 250.0
+
+[node name="Control" type="Control" parent="MainContentBackground/MainContentContainer/VerticalLayoutContainer/TopRow/ElizaArea/ElizaCharacter/MouthNode"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -20.0
+margin_top = -20.0
+margin_right = 20.0
+margin_bottom = 20.0
+
+[node name="MouthSprite" type="AnimatedSprite" parent="MainContentBackground/MainContentContainer/VerticalLayoutContainer/TopRow/ElizaArea/ElizaCharacter/MouthNode/Control"]
+position = Vector2( 9.831, 20.308 )
+scale = Vector2( 4, 4 )
+frames = SubResource( 10 )
+playing = true
 
 [node name="MiddleRow" type="PanelContainer" parent="MainContentBackground/MainContentContainer/VerticalLayoutContainer"]
 margin_top = 221.0

@@ -15,4 +15,9 @@ func _ready():
 #func _process(delta):
 #	pass
 
-
+func _start_talking(smile=true):
+	pass
+func _stop_talking(smile=true):
+	pass
+func _change_expression_state(smile=true, open=false):
+	pass
