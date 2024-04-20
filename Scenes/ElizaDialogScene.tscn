@@ -1,4 +1,4 @@
-[gd_scene load_steps=30 format=2]
+[gd_scene load_steps=32 format=2]
 
 [ext_resource path="res://Fonts/eliza_font_main.tres" type="DynamicFont" id=1]
 [ext_resource path="res://Art/exit.png" type="Texture" id=2]
@@ -11,7 +11,7 @@
 [ext_resource path="res://UserInputText.gd" type="Script" id=9]
 [ext_resource path="res://GameContainer.gd" type="Script" id=10]
 [ext_resource path="res://Art/home.png" type="Texture" id=11]
-[ext_resource path="res://ElizaCharacter.gd" type="Script" id=12]
+[ext_resource path="res://UI/ElizaCharacter.gd" type="Script" id=12]
 [ext_resource path="res://Scenes/BackgroundAudio.gd" type="Script" id=13]
 [ext_resource path="res://Art/sound_enabled.png" type="Texture" id=14]
 [ext_resource path="res://UI/typewriteEffect.tres" type="RichTextEffect" id=15]
@@ -22,6 +22,7 @@
 [ext_resource path="res://Art/Eliza Character Parts/Mouths/mouth_plain_open.png" type="Texture" id=20]
 [ext_resource path="res://Art/Eliza Character Parts/Mouths/mouth_plain_closed.png" type="Texture" id=21]
 [ext_resource path="res://Art/Eliza Character Parts/Mouths/mouth_smile_open.png" type="Texture" id=22]
+[ext_resource path="res://Art/Eliza Character Parts/Eyes/eyes_closed.png" type="Texture" id=23]
 
 [sub_resource type="StyleBoxTexture" id=2]
 texture = ExtResource( 6 )
@@ -41,14 +42,32 @@ animations = [ {
 "name": "neutral",
 "speed": 5.0
 }, {
-"frames": [ ExtResource( 7 ), ExtResource( 22 ), ExtResource( 7 ) ],
-"loop": true,
+"frames": [ ExtResource( 22 ), ExtResource( 7 ) ],
+"loop": false,
 "name": "speak_happy",
+"speed": 10.0
+}, {
+"frames": [ ExtResource( 20 ), ExtResource( 21 ) ],
+"loop": false,
+"name": "speak_neutral",
+"speed": 10.0
+} ]
+
+[sub_resource type="SpriteFrames" id=11]
+animations = [ {
+"frames": [ ExtResource( 5 ), ExtResource( 23 ), ExtResource( 5 ) ],
+"loop": false,
+"name": "blink",
 "speed": 5.0
 }, {
-"frames": [ ExtResource( 21 ), ExtResource( 20 ), ExtResource( 21 ) ],
+"frames": [ ExtResource( 23 ) ],
 "loop": true,
-"name": "speak_neutral",
+"name": "closed",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 5 ) ],
+"loop": true,
+"name": "default",
 "speed": 5.0
 } ]
 
@@ -160,6 +179,7 @@ expand = true
 stretch_mode = 5
 
 [node name="EyesTexture" type="TextureRect" parent="MainContentBackground/MainContentContainer/VerticalLayoutContainer/TopRow/ElizaArea/ElizaCharacter"]
+visible = false
 margin_right = 250.0
 margin_bottom = 250.0
 grow_horizontal = 2
@@ -196,11 +216,11 @@ texture = ExtResource( 7 )
 expand = true
 stretch_mode = 5
 
-[node name="MouthNode" type="ReferenceRect" parent="MainContentBackground/MainContentContainer/VerticalLayoutContainer/TopRow/ElizaArea/ElizaCharacter"]
+[node name="CharacterRect" type="ReferenceRect" parent="MainContentBackground/MainContentContainer/VerticalLayoutContainer/TopRow/ElizaArea/ElizaCharacter"]
 margin_right = 250.0
 margin_bottom = 250.0
 
-[node name="Control" type="Control" parent="MainContentBackground/MainContentContainer/VerticalLayoutContainer/TopRow/ElizaArea/ElizaCharacter/MouthNode"]
+[node name="MouthControl" type="Control" parent="MainContentBackground/MainContentContainer/VerticalLayoutContainer/TopRow/ElizaArea/ElizaCharacter/CharacterRect"]
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
@@ -210,10 +230,26 @@ margin_top = -20.0
 margin_right = 20.0
 margin_bottom = 20.0
 
-[node name="MouthSprite" type="AnimatedSprite" parent="MainContentBackground/MainContentContainer/VerticalLayoutContainer/TopRow/ElizaArea/ElizaCharacter/MouthNode/Control"]
+[node name="MouthSprite" type="AnimatedSprite" parent="MainContentBackground/MainContentContainer/VerticalLayoutContainer/TopRow/ElizaArea/ElizaCharacter/CharacterRect/MouthControl"]
 position = Vector2( 9.831, 20.308 )
 scale = Vector2( 4, 4 )
 frames = SubResource( 10 )
+playing = true
+
+[node name="EyeControl" type="Control" parent="MainContentBackground/MainContentContainer/VerticalLayoutContainer/TopRow/ElizaArea/ElizaCharacter/CharacterRect"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -20.0
+margin_top = -20.0
+margin_right = 20.0
+margin_bottom = 20.0
+
+[node name="EyeSprite" type="AnimatedSprite" parent="MainContentBackground/MainContentContainer/VerticalLayoutContainer/TopRow/ElizaArea/ElizaCharacter/CharacterRect/EyeControl"]
+position = Vector2( 9.831, 20.308 )
+scale = Vector2( 4, 4 )
+frames = SubResource( 11 )
 playing = true
 
 [node name="MiddleRow" type="PanelContainer" parent="MainContentBackground/MainContentContainer/VerticalLayoutContainer"]

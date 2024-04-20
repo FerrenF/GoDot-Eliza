@@ -51,7 +51,13 @@ func append_bbline(line, typewrite=false, wrapper=[]):
 	current_lines = li.join('\n')
 	get_node(".").bbcode_text = current_lines
 	
-func add_eliza_response(response):
+	
+onready var elz_chr = get_tree().current_scene.find_node("ElizaCharacter")
+func add_eliza_response(response):	
+	
+	if elz_chr and elz_chr is PanelContainer:
+		elz_chr._textfx_typing_str(response)
+	
 	var to_append = '[color='+eliza_response_text_color+']'+response+'[/color]'
 	var wrapper = [ '[color='+eliza_name_text_color+']ELIZA:\t[/color]' ]
 	append_bbline(to_append, true, wrapper)

@@ -10,7 +10,6 @@ onready var eliza_chatbox_node = $MainContentBackground/MainContentContainer/Ver
 var chatbox_node_str = "ElizaChat"
 
 
-
 func _on_GameContainer_tree_exiting():
 	autoloadpy.set_chatbox_node("")
 	
