@@ -5,18 +5,22 @@ extends CanvasLayer
 
 export var min_win = Vector2(500,500)
 onready var def_siz = OS.window_size
-onready var eliza_chatbox_node = $MainContentBackground/MainContentContainer/VerticalLayoutContainer/MiddleRow/ElizaResponsePanel/ElizaChat
+onready var eliza_chatbox_node = $MainContentBackground/MainContentContainer/VerticalLayoutContainer/MiddleRow/ElizaTabContainer/ElizaResponsePanel/ElizaChat
 
 var chatbox_node_str = "ElizaChat"
-
+var tracerbox_node_str = "TracerHistory"
 
 func _on_GameContainer_tree_exiting():
 	autoloadpy.set_chatbox_node("")
+	autoloadpy.set_tracerbox_node("")
 	
 func _ready():
 	OS.min_window_size = min_win
+	
 	autoloadpy.set_chatbox_node(chatbox_node_str)
+	autoloadpy.set_tracerbox_node(tracerbox_node_str)
 	autoloadpy.send_greeting()
+	
 
 func window_resize_handler():
 	if not def_siz:

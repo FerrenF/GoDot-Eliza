@@ -16,13 +16,13 @@
 [ext_resource path="res://Art/sound_enabled.png" type="Texture" id=14]
 [ext_resource path="res://UI/typewriteEffect.tres" type="RichTextEffect" id=15]
 [ext_resource path="res://Scenes/Sound.gd" type="Script" id=16]
-[ext_resource path="res://Styles/ElizaDialogStyle.tres" type="Theme" id=17]
 [ext_resource path="res://UI/ElizaChat.gd" type="Script" id=18]
 [ext_resource path="res://Styles/MainControlTheme.tres" type="Theme" id=19]
 [ext_resource path="res://Art/Eliza Character Parts/Mouths/mouth_plain_open.png" type="Texture" id=20]
 [ext_resource path="res://Art/Eliza Character Parts/Mouths/mouth_plain_closed.png" type="Texture" id=21]
 [ext_resource path="res://Art/Eliza Character Parts/Mouths/mouth_smile_open.png" type="Texture" id=22]
 [ext_resource path="res://Art/Eliza Character Parts/Eyes/eyes_closed.png" type="Texture" id=23]
+[ext_resource path="res://UI/TracerHistoryControl.gd" type="Script" id=24]
 
 [sub_resource type="StyleBoxTexture" id=2]
 texture = ExtResource( 6 )
@@ -259,6 +259,7 @@ margin_bottom = 421.0
 rect_min_size = Vector2( 0, 200 )
 size_flags_vertical = 3
 size_flags_stretch_ratio = 3.0
+theme = ExtResource( 19 )
 
 [node name="ElizaResponseArea" type="ReferenceRect" parent="MainContentBackground/MainContentContainer/VerticalLayoutContainer/MiddleRow"]
 margin_left = 4.0
@@ -266,24 +267,44 @@ margin_top = 5.0
 margin_right = 636.0
 margin_bottom = 195.0
 
-[node name="ElizaResponsePanel" type="Panel" parent="MainContentBackground/MainContentContainer/VerticalLayoutContainer/MiddleRow"]
+[node name="ElizaTabContainer" type="TabContainer" parent="MainContentBackground/MainContentContainer/VerticalLayoutContainer/MiddleRow"]
 margin_left = 4.0
 margin_top = 5.0
 margin_right = 636.0
 margin_bottom = 195.0
+tab_align = 0
 
-[node name="ElizaChat" type="RichTextLabel" parent="MainContentBackground/MainContentContainer/VerticalLayoutContainer/MiddleRow/ElizaResponsePanel" groups=["dynamic_text_size"]]
-anchor_left = 0.02
-anchor_top = 0.1
-anchor_right = 0.98
-anchor_bottom = 0.9
+[node name="ElizaResponsePanel" type="Panel" parent="MainContentBackground/MainContentContainer/VerticalLayoutContainer/MiddleRow/ElizaTabContainer"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_top = 28.0
+
+[node name="ElizaChat" type="RichTextLabel" parent="MainContentBackground/MainContentContainer/VerticalLayoutContainer/MiddleRow/ElizaTabContainer/ElizaResponsePanel" groups=["dynamic_text_size"]]
+anchor_right = 1.0
+anchor_bottom = 1.0
 focus_mode = 2
-theme = ExtResource( 17 )
 bbcode_enabled = true
 scroll_following = true
 selection_enabled = true
 custom_effects = [ ExtResource( 15 ) ]
 script = ExtResource( 18 )
+
+[node name="TracerTrackerPanel" type="Panel" parent="MainContentBackground/MainContentContainer/VerticalLayoutContainer/MiddleRow/ElizaTabContainer"]
+visible = false
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 4.0
+margin_top = 36.0
+margin_right = -4.0
+margin_bottom = -4.0
+
+[node name="TracerHistory" type="RichTextLabel" parent="MainContentBackground/MainContentContainer/VerticalLayoutContainer/MiddleRow/ElizaTabContainer/TracerTrackerPanel"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+focus_mode = 2
+bbcode_enabled = true
+selection_enabled = true
+script = ExtResource( 24 )
 
 [node name="BottomRow" type="PanelContainer" parent="MainContentBackground/MainContentContainer/VerticalLayoutContainer"]
 margin_top = 425.0
