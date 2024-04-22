@@ -2,10 +2,10 @@ extends RichTextLabel
 
 
 var max_lines = 30
-var user_name_text_color = "green"
-var user_request_text_color = "white"
-var eliza_name_text_color = "blue"
-var eliza_response_text_color = "white"
+export var user_name_text_color = "green"
+export var user_request_text_color = "white"
+export var eliza_name_text_color = "blue"
+export var eliza_response_text_color = "white"
 
 
 # Called when the node enters the scene tree for the first time.

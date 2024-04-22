@@ -2,10 +2,10 @@ extends RichTextLabel
 
 
 var max_lines = 30
-var tracer_text_color = "white"
+export var tracer_text_color = "white"
 
-var eliza_name_text_color = "blue"
-var eliza_response_text_color = "white"
+export var eliza_name_text_color = "blue"
+export var eliza_response_text_color = "white"
 
 
 # Called when the node enters the scene tree for the first time.
@@ -27,7 +27,7 @@ func append_bbline(line):
 func add_tracer_response(text_input, response):	
 
 	var to_append = '[color='+eliza_name_text_color+']ELIZA:\t[/color]'
-	to_append += '[color='+eliza_response_text_color+']'+text_input+'[/color]\n'
-	to_append += '[color='+tracer_text_color+']'+response+'[/color]\n'
+	to_append += '[color='+eliza_response_text_color+']'+text_input+'[/color]\n[color=yellow]DECOMPOSITION:[/color]\n'
+	to_append += '[color='+tracer_text_color+']'+response+'[/color]'
 	append_bbline(to_append)
 

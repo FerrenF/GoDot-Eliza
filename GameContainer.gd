@@ -5,7 +5,6 @@ extends CanvasLayer
 
 export var min_win = Vector2(500,500)
 onready var def_siz = OS.window_size
-onready var eliza_chatbox_node = $MainContentBackground/MainContentContainer/VerticalLayoutContainer/MiddleRow/ElizaTabContainer/ElizaResponsePanel/ElizaChat
 
 var chatbox_node_str = "ElizaChat"
 var tracerbox_node_str = "TracerHistory"

@@ -2,9 +2,9 @@
 
 [sub_resource type="Gradient" id=1]
 offsets = PoolRealArray( 0, 0.977654 )
-colors = PoolColorArray( 0.352941, 0.2, 0.929412, 1, 0.694118, 1, 1, 1 )
+colors = PoolColorArray( 0.4941, 0.52569, 0.81, 1, 0.694118, 0.905882, 1, 1 )
 
 [resource]
 gradient = SubResource( 1 )
-fill_from = Vector2( 0.470833, 1 )
+fill_from = Vector2( 0.420833, 0.875 )
 fill_to = Vector2( 0.479167, 0 )

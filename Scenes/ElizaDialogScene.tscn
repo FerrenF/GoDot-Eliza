@@ -1,4 +1,4 @@
-[gd_scene load_steps=32 format=2]
+[gd_scene load_steps=33 format=2]
 
 [ext_resource path="res://Fonts/eliza_font_main.tres" type="DynamicFont" id=1]
 [ext_resource path="res://Art/exit.png" type="Texture" id=2]
@@ -16,6 +16,7 @@
 [ext_resource path="res://Art/sound_enabled.png" type="Texture" id=14]
 [ext_resource path="res://UI/typewriteEffect.tres" type="RichTextEffect" id=15]
 [ext_resource path="res://Scenes/Sound.gd" type="Script" id=16]
+[ext_resource path="res://UI/panelGradient.tres" type="Texture" id=17]
 [ext_resource path="res://UI/ElizaChat.gd" type="Script" id=18]
 [ext_resource path="res://Styles/MainControlTheme.tres" type="Theme" id=19]
 [ext_resource path="res://Art/Eliza Character Parts/Mouths/mouth_plain_open.png" type="Texture" id=20]
@@ -71,17 +72,7 @@ animations = [ {
 "speed": 5.0
 } ]
 
-[sub_resource type="StyleBoxFlat" id=9]
-bg_color = Color( 1, 1, 1, 1 )
-border_width_left = 1
-border_width_top = 1
-border_width_right = 1
-border_width_bottom = 1
-border_color = Color( 0.2, 0.2, 0.2, 1 )
-corner_radius_top_left = 4
-corner_radius_top_right = 4
-corner_radius_bottom_right = 4
-corner_radius_bottom_left = 4
+[sub_resource type="StyleBoxEmpty" id=12]
 
 [sub_resource type="DynamicFontData" id=7]
 font_path = "res://Fonts/PixelifySans-Regular.ttf"
@@ -262,24 +253,36 @@ size_flags_stretch_ratio = 3.0
 theme = ExtResource( 19 )
 
 [node name="ElizaResponseArea" type="ReferenceRect" parent="MainContentBackground/MainContentContainer/VerticalLayoutContainer/MiddleRow"]
-margin_left = 4.0
+margin_left = 5.0
 margin_top = 5.0
-margin_right = 636.0
+margin_right = 635.0
 margin_bottom = 195.0
 
-[node name="ElizaTabContainer" type="TabContainer" parent="MainContentBackground/MainContentContainer/VerticalLayoutContainer/MiddleRow"]
-margin_left = 4.0
+[node name="TextureRect" type="TextureRect" parent="MainContentBackground/MainContentContainer/VerticalLayoutContainer/MiddleRow"]
+margin_left = 5.0
 margin_top = 5.0
-margin_right = 636.0
+margin_right = 635.0
+margin_bottom = 195.0
+texture = ExtResource( 17 )
+expand = true
+
+[node name="ElizaTabContainer" type="TabContainer" parent="MainContentBackground/MainContentContainer/VerticalLayoutContainer/MiddleRow"]
+margin_left = 5.0
+margin_top = 5.0
+margin_right = 635.0
 margin_bottom = 195.0
 tab_align = 0
 
-[node name="ElizaResponsePanel" type="Panel" parent="MainContentBackground/MainContentContainer/VerticalLayoutContainer/MiddleRow/ElizaTabContainer"]
+[node name="Chat With Eliza" type="Panel" parent="MainContentBackground/MainContentContainer/VerticalLayoutContainer/MiddleRow/ElizaTabContainer"]
+visible = false
 anchor_right = 1.0
 anchor_bottom = 1.0
 margin_top = 28.0
+__meta__ = {
+"_editor_description_": ""
+}
 
-[node name="ElizaChat" type="RichTextLabel" parent="MainContentBackground/MainContentContainer/VerticalLayoutContainer/MiddleRow/ElizaTabContainer/ElizaResponsePanel" groups=["dynamic_text_size"]]
+[node name="ElizaChat" type="RichTextLabel" parent="MainContentBackground/MainContentContainer/VerticalLayoutContainer/MiddleRow/ElizaTabContainer/Chat With Eliza" groups=["dynamic_text_size"]]
 anchor_right = 1.0
 anchor_bottom = 1.0
 focus_mode = 2
@@ -288,23 +291,23 @@ scroll_following = true
 selection_enabled = true
 custom_effects = [ ExtResource( 15 ) ]
 script = ExtResource( 18 )
+user_request_text_color = "#333"
+eliza_response_text_color = "#333"
 
-[node name="TracerTrackerPanel" type="Panel" parent="MainContentBackground/MainContentContainer/VerticalLayoutContainer/MiddleRow/ElizaTabContainer"]
-visible = false
+[node name="Trace Eliza\'s Logic" type="Panel" parent="MainContentBackground/MainContentContainer/VerticalLayoutContainer/MiddleRow/ElizaTabContainer"]
 anchor_right = 1.0
 anchor_bottom = 1.0
-margin_left = 4.0
-margin_top = 36.0
-margin_right = -4.0
-margin_bottom = -4.0
+margin_top = 28.0
 
-[node name="TracerHistory" type="RichTextLabel" parent="MainContentBackground/MainContentContainer/VerticalLayoutContainer/MiddleRow/ElizaTabContainer/TracerTrackerPanel"]
+[node name="TracerHistory" type="RichTextLabel" parent="MainContentBackground/MainContentContainer/VerticalLayoutContainer/MiddleRow/ElizaTabContainer/Trace Eliza\'s Logic"]
 anchor_right = 1.0
 anchor_bottom = 1.0
 focus_mode = 2
 bbcode_enabled = true
 selection_enabled = true
 script = ExtResource( 24 )
+tracer_text_color = "green"
+eliza_response_text_color = "#333"
 
 [node name="BottomRow" type="PanelContainer" parent="MainContentBackground/MainContentContainer/VerticalLayoutContainer"]
 margin_top = 425.0
@@ -313,15 +316,15 @@ margin_bottom = 480.0
 size_flags_vertical = 3
 
 [node name="InputArea" type="ReferenceRect" parent="MainContentBackground/MainContentContainer/VerticalLayoutContainer/BottomRow"]
-margin_left = 4.0
+margin_left = 5.0
 margin_top = 5.0
-margin_right = 636.0
+margin_right = 635.0
 margin_bottom = 50.0
 
 [node name="UserInputPanel" type="Panel" parent="MainContentBackground/MainContentContainer/VerticalLayoutContainer/BottomRow"]
-margin_left = 4.0
+margin_left = 5.0
 margin_top = 5.0
-margin_right = 636.0
+margin_right = 635.0
 margin_bottom = 50.0
 
 [node name="ControlContent" type="HBoxContainer" parent="MainContentBackground/MainContentContainer/VerticalLayoutContainer/BottomRow/UserInputPanel"]
@@ -334,17 +337,15 @@ size_flags_vertical = 3
 custom_constants/separation = 10
 
 [node name="UserInputBox" type="PanelContainer" parent="MainContentBackground/MainContentContainer/VerticalLayoutContainer/BottomRow/UserInputPanel/ControlContent"]
-margin_right = 478.0
+margin_right = 477.0
 margin_bottom = 37.0
 size_flags_horizontal = 3
 size_flags_stretch_ratio = 6.0
-custom_styles/panel = SubResource( 9 )
+custom_styles/panel = SubResource( 12 )
 
 [node name="UserInputText" type="LineEdit" parent="MainContentBackground/MainContentContainer/VerticalLayoutContainer/BottomRow/UserInputPanel/ControlContent/UserInputBox" groups=["dynamic_text_size"]]
-margin_left = 1.0
-margin_top = 1.0
 margin_right = 477.0
-margin_bottom = 36.0
+margin_bottom = 37.0
 grow_horizontal = 2
 grow_vertical = 2
 size_flags_horizontal = 3
@@ -371,8 +372,8 @@ text = ">"
 valign = 1
 
 [node name="Submit" type="Button" parent="MainContentBackground/MainContentContainer/VerticalLayoutContainer/BottomRow/UserInputPanel/ControlContent"]
-margin_left = 488.0
-margin_right = 568.0
+margin_left = 487.0
+margin_right = 567.0
 margin_bottom = 37.0
 size_flags_horizontal = 3
 text = "Submit"

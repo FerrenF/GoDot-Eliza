@@ -23,7 +23,7 @@ var talk_spacing = 0.25
 var effect_speed = 20
 var talk_counter = 0
 func _textfx_typing_str(s):	
-	var estimated_time_to_speak = (len(s)+1)/effect_speed
+	var estimated_time_to_speak = (min(len(s), effect_speed*3) +1)/effect_speed
 	var how_many_talks = floor(estimated_time_to_speak / talk_spacing)
 	talk_counter = how_many_talks
 	talk_timer.wait_time = talk_spacing
