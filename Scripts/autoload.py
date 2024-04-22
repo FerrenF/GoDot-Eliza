@@ -19,7 +19,6 @@ def dbg_msg(str):
 			
 @exposed
 class autoload(Node):
-
 	chatbox_node = ""
 	DEBUG = False
 	script_name = "doctor.txt"
@@ -27,10 +26,19 @@ class autoload(Node):
 	load_status = False
 	eliza_obj = None
 	script_obj = elizascript.Script()
-			
+	tracer_obj = None
+	tracerbox_node = None
+	
+	def send_greeting(self):
+		self._add_eliza_response(str(self._get_script_greeting()))
+		
 	def is_ready(self):
 		return self.load_status and self.init_status
 		
+	def set_tracerbox_node(self, node):
+		self.tracerbox_node = node
+		
+	
 	def set_chatbox_node(self, node):
 		self.chatbox_node = node
 		self.init_status = True if node != "" else False
@@ -39,6 +47,7 @@ class autoload(Node):
 		print("Initializing Eliza...")
 		self.init_eliza()
 		
+	
 	def init_eliza(self):
 		try:
 			script_str: StringIO = self._load_script(self.script_name)
@@ -55,7 +64,6 @@ class autoload(Node):
 			exit(2)
 			
 		dbg_msg(f'Script loaded, {len(script.rules.items())} rules found.')
-
 		if not status:
 			dbg_msg("Failed to load script.")		
 			exit(2)
@@ -63,12 +71,16 @@ class autoload(Node):
 		self.load_status = status
 		self.script_obj = script
 		
+		self.tracer_obj = elizalogic.StringTracer()
 		self.eliza_obj = eliza.Eliza(script)
+		self.eliza_obj.set_tracer(self.tracer_obj)
+		
 		dbg_msg(f'Eliza initialized.')
 		self.load_status = True
 		
 		if self.init_status:
 			self._add_eliza_response(str(self._get_script_greeting()))
+			
 			
 	def _load_script(self, name):
 		cd = os.getcwd()
@@ -82,8 +94,8 @@ class autoload(Node):
 			dbg_msg(f"Error: File '{scr_path}' not found.")
 			raise e
 			
-	def send_greeting(self):
-		self._add_eliza_response(str(self._get_script_greeting()))
+	
+		
 	def _get_script_greeting(self):
 		if not self.is_ready:
 			return "Hello."
@@ -112,10 +124,16 @@ class autoload(Node):
 		if not self.is_ready:
 			dbg_msg("Problem receiving response")
 			return
-			
+		
 		node = self.get_tree().get_current_scene().find_node(self.chatbox_node)
 		node.call("add_eliza_response", response)
-			
+		if self.tracerbox_node:
+			self._add_tracer_response(response)
 		
-
+	def _add_tracer_response(self, input_text):
+		
+		node = self.get_tree().get_current_scene().find_node(self.tracerbox_node)
+		trace = self.eliza_obj.get_tracer_text()
+		node.call("add_tracer_response", input_text, trace)
+			
 		

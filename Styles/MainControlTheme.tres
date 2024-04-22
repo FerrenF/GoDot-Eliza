@@ -1,9 +1,10 @@
-[gd_resource type="Theme" load_steps=10 format=2]
+[gd_resource type="Theme" load_steps=17 format=2]
 
 [ext_resource path="res://Fonts/FallbackFont.tres" type="DynamicFont" id=1]
 [ext_resource path="res://Styles/submitButtonStyle.tres" type="StyleBox" id=2]
 [ext_resource path="res://UI/panelGradient.tres" type="Texture" id=3]
 [ext_resource path="res://Fonts/ElizaMenuSummaryFont.tres" type="DynamicFont" id=4]
+[ext_resource path="res://Fonts/ElizaChatFont.tres" type="DynamicFont" id=5]
 
 [sub_resource type="StyleBoxFlat" id=4]
 bg_color = Color( 0.8, 1, 0.984314, 1 )
@@ -19,41 +20,106 @@ corner_radius_bottom_left = 5
 
 [sub_resource type="StyleBoxFlat" id=5]
 bg_color = Color( 0.941176, 0.941176, 0.941176, 1 )
+border_width_left = 5
 border_width_top = 1
+border_width_right = 1
 border_width_bottom = 1
 border_color = Color( 0.713726, 0.713726, 0.713726, 1 )
+border_blend = true
 corner_radius_top_left = 4
 corner_radius_top_right = 4
 corner_radius_bottom_right = 4
 corner_radius_bottom_left = 4
+corner_detail = 1
 
 [sub_resource type="StyleBoxFlat" id=3]
 content_margin_left = 25.0
 content_margin_right = 5.0
 bg_color = Color( 0.956863, 0.956863, 0.956863, 1 )
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color( 0.603922, 0.603922, 0.603922, 1 )
+border_blend = true
 corner_radius_top_left = 4
 corner_radius_top_right = 4
 corner_radius_bottom_right = 4
 corner_radius_bottom_left = 4
+corner_detail = 1
 
-[sub_resource type="StyleBoxTexture" id=1]
+[sub_resource type="StyleBoxTexture" id=10]
 texture = ExtResource( 3 )
 region_rect = Rect2( 0, 0, 64, 64 )
 
-[sub_resource type="StyleBoxFlat" id=2]
-content_margin_left = 4.0
-content_margin_right = 4.0
+[sub_resource type="StyleBoxFlat" id=12]
+content_margin_left = 5.0
+content_margin_right = 5.0
 content_margin_top = 5.0
 content_margin_bottom = 5.0
-bg_color = Color( 0.168627, 0.168627, 0.168627, 1 )
-border_width_left = 2
+bg_color = Color( 0.635294, 0.866667, 1, 1 )
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 5
+
+[sub_resource type="StyleBoxFlat" id=13]
+content_margin_left = 25.0
+content_margin_right = 25.0
+content_margin_top = 5.0
+content_margin_bottom = 5.0
+bg_color = Color( 1, 1, 1, 0.494118 )
+border_width_left = 1
 border_width_top = 2
-border_width_right = 2
-border_width_bottom = 2
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color( 0.741176, 0.741176, 0.741176, 1 )
+border_blend = true
 corner_radius_top_left = 5
 corner_radius_top_right = 5
-corner_radius_bottom_right = 5
-corner_radius_bottom_left = 5
+corner_detail = 6
+
+[sub_resource type="StyleBoxEmpty" id=14]
+
+[sub_resource type="StyleBoxFlat" id=7]
+content_margin_left = 10.0
+content_margin_right = 10.0
+bg_color = Color( 0.478492, 0.4355, 0.67, 1 )
+corner_radius_top_left = 5
+corner_radius_top_right = 5
+
+[sub_resource type="StyleBoxFlat" id=8]
+content_margin_left = 10.0
+content_margin_right = 10.0
+bg_color = Color( 0.411765, 0.545098, 0.827451, 1 )
+corner_radius_top_left = 5
+corner_radius_top_right = 5
+
+[sub_resource type="StyleBoxFlat" id=15]
+bg_color = Color( 0.0320435, 0.271593, 0.410156, 1 )
+border_width_left = 2
+border_width_top = 1
+border_width_right = 2
+border_width_bottom = 1
+border_color = Color( 0.8, 0.8, 0.8, 0 )
+corner_radius_top_left = 3
+corner_radius_top_right = 3
+corner_radius_bottom_right = 3
+corner_radius_bottom_left = 3
+
+[sub_resource type="StyleBoxFlat" id=16]
+content_margin_left = 10.0
+bg_color = Color( 0.141176, 0.141176, 0.141176, 1 )
+draw_center = false
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color( 0.388235, 0.388235, 0.388235, 1 )
+corner_radius_top_left = 3
+corner_radius_top_right = 3
+corner_radius_bottom_right = 3
+corner_radius_bottom_left = 3
+corner_detail = 6
 
 [resource]
 default_font = ExtResource( 1 )
@@ -67,5 +133,13 @@ LineEdit/colors/font_color = Color( 0.0823529, 0.0823529, 0.0823529, 1 )
 LineEdit/colors/font_color_selected = Color( 0.243137, 0.243137, 0.243137, 1 )
 LineEdit/styles/focus = SubResource( 5 )
 LineEdit/styles/normal = SubResource( 3 )
-Panel/styles/panel = SubResource( 1 )
-PanelContainer/styles/panel = SubResource( 2 )
+Panel/styles/panel = SubResource( 10 )
+PanelContainer/styles/panel = SubResource( 12 )
+RichTextLabel/colors/default_color = Color( 0.0627451, 0.0627451, 0.0627451, 1 )
+RichTextLabel/fonts/normal_font = ExtResource( 5 )
+RichTextLabel/styles/normal = SubResource( 13 )
+TabContainer/styles/panel = SubResource( 14 )
+TabContainer/styles/tab_bg = SubResource( 7 )
+TabContainer/styles/tab_fg = SubResource( 8 )
+VScrollBar/styles/grabber = SubResource( 15 )
+VScrollBar/styles/scroll = SubResource( 16 )
