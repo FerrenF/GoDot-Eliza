@@ -3,7 +3,7 @@
 
 # GoDot-Eliza
 ![preview_0_1_0-3.png](preview_0_1_0-3.png)
-A modern reimagining of the classic chatbot ELIZA, implemented using the GoDot game engine. Dive into a world of questionable therapy sessions with our pixelated art style and soothing background music. Don't use this as an actual therapy device if you need help - you are worth more than that. J.W. was mad about that too.
+A modern reimagining of the classic chatbot ELIZA, implemented using the Godot game engine. Dive into a world of questionable therapy sessions with our pixelated art style and soothing background music. Don't use this as an actual therapy device if you need help - you are worth more than that. J.W. was mad about that too.
 
 ## Features
 ![preview_0_1_0-1.png](preview_0_1_0-1.png)
@@ -38,7 +38,7 @@ We welcome feedback from users to improve the project further. Whether anything 
 
 ## Acknowledgments
 
-We would like to express our gratitude to Joseph Weizenbaum for creating the original ELIZA chatbot, which inspired this project. Additionally, we thank the Godot community for their support and resources that facilitated the development process. Please bring pythonscript to GoDot 4.
+We would like to express our gratitude to Joseph Weizenbaum for creating the original ELIZA chatbot, which inspired this project. Additionally, we thank the Godot community for their support and resources that facilitated the development process. Please bring pythonscript to Godot 4.
 
 A special thanks to Harris Heller @ https://www.youtube.com/harrisheller for providing the royalty free background music for this project.
 
