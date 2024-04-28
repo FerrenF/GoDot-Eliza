@@ -46,6 +46,7 @@ config/icon="res://icon.png"
 
 CanvasManager="*res://Scenes/CanvasManager.tscn"
 autoloadpy="*res://Scripts/autoload.py"
+SceneLoader="*res://Scenes/SceneLoader.tscn"
 
 [display]
 

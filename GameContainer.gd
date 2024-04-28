@@ -38,6 +38,6 @@ func _on_Quit_pressed():
 	get_tree().quit(0)
 	
 func _on_Home_pressed():
-	get_tree().change_scene("res://Scenes/menu.tscn")
+	SceneLoader.change_scene("res://Scenes/menu.tscn",1)
 
 

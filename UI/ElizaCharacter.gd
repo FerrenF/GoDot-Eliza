@@ -19,13 +19,17 @@ export var blink_range_max = 5
 var blink_timer = Timer.new()
 var talk_timer = Timer.new()
 
+var min_talk = 2
 var talk_spacing = 0.25
 var effect_speed = 20
 var talk_counter = 0
 func _textfx_typing_str(s):	
-	var estimated_time_to_speak = (min(len(s), effect_speed*3) +1)/effect_speed
+	
+	
+	var iniz = min(len(s), (effect_speed*3)+1)
+	var estimated_time_to_speak = max(iniz, effect_speed+1)/effect_speed
 	var how_many_talks = floor(estimated_time_to_speak / talk_spacing)
-	talk_counter = how_many_talks
+	talk_counter = max(how_many_talks, min_talk)
 	talk_timer.wait_time = talk_spacing
 	talk_timer.start()
 
