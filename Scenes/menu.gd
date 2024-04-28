@@ -17,8 +17,13 @@ func start_button_pressed():
 	load_eliza_scene()
 	
 func load_eliza_scene():
-	get_tree().change_scene("res://Scenes/ElizaDialogScene.tscn")
+	SceneLoader.change_scene("res://Scenes/ElizaDialogScene.tscn",1)
+	#get_tree().change_scene("res://Scenes/ElizaDialogScene.tscn")
 
 
 func _on_Quit_pressed():
 	get_tree().quit()
+
+
+func _on_Credits_pressed():
+	SceneLoader.change_scene("res://Scenes/credits.tscn",1)

@@ -274,7 +274,6 @@ margin_bottom = 195.0
 tab_align = 0
 
 [node name="Chat With Eliza" type="Panel" parent="MainContentBackground/MainContentContainer/VerticalLayoutContainer/MiddleRow/ElizaTabContainer"]
-visible = false
 anchor_right = 1.0
 anchor_bottom = 1.0
 margin_top = 28.0
@@ -295,6 +294,7 @@ user_request_text_color = "#333"
 eliza_response_text_color = "#333"
 
 [node name="Trace Eliza\'s Logic" type="Panel" parent="MainContentBackground/MainContentContainer/VerticalLayoutContainer/MiddleRow/ElizaTabContainer"]
+visible = false
 anchor_right = 1.0
 anchor_bottom = 1.0
 margin_top = 28.0
